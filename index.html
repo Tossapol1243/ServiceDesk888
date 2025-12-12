@@ -6,7 +6,7 @@
     <title>🎰 ServiceDesk 888</title>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* --- CSS STYLES --- */
+        /* --- CSS STYLES (ไม่มีการเปลี่ยนแปลงจากที่ปรับปรุงล่าสุด) --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
@@ -14,14 +14,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            /* ปรับ: ลดความสูงลงเล็กน้อย */
             min-height: 95vh; 
-            /* ปรับ: ใช้ความกว้างเต็มจอ */
             width: 100vw; 
             background: radial-gradient(circle at 20% 30%, #1a0a0a 0%, #000 50%), radial-gradient(circle at 80% 70%, #0a0a1a 0%, #000 50%);
             color: #e0e0e0;
             position: relative;
-            overflow-x: hidden; /* ปรับ: ซ่อน scrollbar แนวนอน */
+            overflow-x: hidden; 
         }
         body::before {
             content: '';
@@ -60,7 +58,6 @@
         }
         .container {
             background: linear-gradient(135deg, rgba(30,30,30,0.95), rgba(15,15,15,0.98));
-            /* ปรับ: ลด padding แนวตั้ง (40px -> 30px) และเพิ่มความกว้างสูงสุด */
             padding: 30px 60px;
             border-radius: 20px;
             box-shadow: 
@@ -68,9 +65,8 @@
                 0 0 120px rgba(255,69,0,0.4),
                 inset 0 0 60px rgba(0,0,0,0.8);
             text-align: center;
-            /* ปรับ: เพิ่ม Max Width ให้ใช้พื้นที่ด้านข้างมากขึ้น */
             max-width: 950px; 
-            width: 90vw; /* ให้ใช้ 90% ของความกว้าง viewport */
+            width: 90vw;
             border: 4px solid #ffd700;
             position: relative;
             animation: containerGlow 2s ease-in-out infinite;
@@ -118,7 +114,6 @@
             font-weight: 700; 
             margin-bottom: 10px;
             animation: titleFlash 1.5s ease-in-out infinite;
-            /* *** FIX: เปลี่ยน Font สำหรับหัวข้อหลัก *** */
             font-family: Arial, sans-serif;
         }
         @keyframes titleFlash {
@@ -146,7 +141,6 @@
             margin-bottom: 30px;
             text-shadow: 0 0 20px #ff4500;
             animation: subtitlePulse 2s ease-in-out infinite;
-            /* *** FIX: เปลี่ยน Font สำหรับหัวข้อรอง *** */
             font-family: Arial, sans-serif;
         }
         @keyframes subtitlePulse {
@@ -182,14 +176,12 @@
             font-size: 1.4em; 
             margin-bottom: 5px;
             text-shadow: 0 0 10px #ff8c00;
-            /* Font Family ยังคงเป็น Chakra Petch ตาม body หรือตั้งค่าเพิ่มเพื่อให้ชัวร์ */
             font-family: 'Chakra Petch', sans-serif;
         }
         .status-board p {
             font-size: 1.2em;
             color: #fff;
             margin: 5px 0;
-            /* *** FIX: เปลี่ยน Font สำหรับข้อความบรรยายสถานะ *** */
             font-family: Arial, sans-serif;
         }
         .status-board .count {
@@ -201,10 +193,9 @@
         }
 
         .button-draw { 
-            /* *** EDIT 2: เพิ่มขนาดปุ่ม (padding และ font-size) *** */
             background: linear-gradient(135deg, #ff4500, #ff8c00); 
-            color: white; border: none; padding: 25px 60px; /* เพิ่ม padding */
-            font-size: 1.8em; /* เพิ่มขนาดตัวอักษร */
+            color: white; border: none; padding: 25px 60px; 
+            font-size: 1.8em; 
             border-radius: 50px; cursor: pointer; 
             box-shadow: 
                 0 8px 20px rgba(255,69,0,0.6),
@@ -251,9 +242,8 @@
         }
         .button-draw:disabled { background: #666; cursor: not-allowed; opacity: 0.6; }
         .slot-frame {
-            /* ปรับ: เพิ่มความกว้างของ slot-frame ให้เข้ากับ container ใหม่ */
             width: 90%; 
-            max-width: 850px; /* เพิ่ม max-width เพื่อขยายด้านข้าง */
+            max-width: 850px; 
             height: 240px;
             background: linear-gradient(135deg, #1a0033, #330066, #1a0033);
             border: 12px solid #ffd700; border-radius: 25px;
@@ -263,34 +253,20 @@
             position: relative;
         }
         .slot-lever {
-            /* *** EDIT 3: ลบคันโยกออก - ซ่อนด้วย display: none !important *** */
             display: none !important;
-            position: absolute; right: -50px; top: 50%;
-            transform: translateY(-50%); width: 35px; height: 140px;
-            background: linear-gradient(to right, #6b2e11, #a0522d, #6b2e11);
-            border-radius: 20px; border: 3px solid #4a1f0a;
-        }
-        .slot-lever::before {
-            content: ''; position: absolute; top: -20px; left: 50%;
-            transform: translateX(-50%); width: 50px; height: 50px;
-            background: radial-gradient(circle, #ff6347, #ff4500, #cc0000);
-            border-radius: 50%; box-shadow: 0 0 25px rgba(255,69,0,0.9);
-            border: 4px solid #8b0000;
         }
         .slot-container {
-            /* ปรับ: ขยาย slot-container ให้เต็มความกว้าง */
             display: flex; justify-content: space-around; align-items: center;
             border: 6px solid #cc0000; border-radius: 15px;
             background: linear-gradient(135deg, #000, #1a1a1a, #000);
-            overflow: hidden; width: 95%; height: 170px; /* ใช้ความกว้าง 95% ของ slot-frame */
+            overflow: hidden; width: 95%; height: 170px; 
             box-shadow: inset 0 0 30px rgba(255,215,0,0.6);
             position: relative;
         }
         .reel-wrapper {
-            /* ปรับ: ให้ reel-wrapper ใช้ความกว้างแบบยืดหยุ่น */
             flex-grow: 1;
             width: 33.33%; 
-            max-width: 250px; /* จำกัดความกว้างสูงสุดต่อ reel เพื่อไม่ให้ใหญ่เกินไป */
+            max-width: 250px; 
             height: 100%; overflow: hidden;
             position: relative;
             background: linear-gradient(180deg, #000, #1a1a1a, #000);
@@ -439,7 +415,7 @@
 <body>
     <audio id="spinSound" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3" preload="auto"></audio>
     <audio id="winSound" src="https://pub-841961e57c664b3896504a50b7310034.r2.dev/tada.mp3" preload="auto"></audio>
-    <audio id="jackpotSound" src="https://pub-841961e57c664b3896504a50b7310034.r2.dev/cheering.mp3" preload="auto"></audio>
+    <audio id="jackpotSound" src="https://pub-841961e57c664b3896504a50b7310034.r2.dev/conga_drum_roll.mp3" preload="auto"></audio>
 
 
     <div class="container">
@@ -534,7 +510,7 @@ Prize #52</textarea>
         </div>
     </div>
     <script>
-        let currentWinner = { name: '', image: '' };
+        let currentWinner = { name: '', symbol: '' }; // แก้ไขให้มี symbol ด้วย
         let allItems = [];
         const reelHeight = 170;
         const SPIN_DURATION_MS = 6000;
@@ -544,28 +520,24 @@ Prize #52</textarea>
         // ดึง Audio Elements สำหรับ Spin, Win และ Jackpot
         const spinSound = document.getElementById('spinSound');
         const winSound = document.getElementById('winSound');
-        const jackpotSound = document.getElementById('jackpotSound'); // เพิ่ม Jackpot Sound
+        const jackpotSound = document.getElementById('jackpotSound'); 
         
         spinSound.volume = 0.5; // เสียงหมุน
         winSound.volume = 0.7;  // เสียงชนะ (Tada)
-        jackpotSound.volume = 0.9; // เสียง Jackpot/เชียร์
+        jackpotSound.volume = 0.9; // เสียง Conga Drum Roll
 
         // ฟังก์ชันสำหรับควบคุมการเล่นซ้ำของ Spin Sound
         spinSound.addEventListener('ended', function() {
-            this.currentTime = 0; // ตั้งเวลาเพลงกลับไปที่จุดเริ่มต้น
+            this.currentTime = 0; 
             this.play().catch(error => console.log("Spin Sound Loop Failed:", error));
         }, false);
         
-        // ฟังก์ชัน helper เพื่อพยายามเล่นเสียงอย่างปลอดภัย
+        // **ปรับปรุง: ฟังก์ชัน helper เพื่อพยายามเล่นเสียงอย่างปลอดภัย**
+        // การปลดล็อกเสียงจะเกิดขึ้นเมื่อมีการคลิกครั้งแรกใน startDraw
         function safePlay(audioElement) {
             audioElement.currentTime = 0;
             audioElement.play().catch(error => {
-                // หากเล่นครั้งแรกไม่สำเร็จ ลองอีกครั้งหลังจากหน่วงเวลาสั้นๆ
-                setTimeout(() => {
-                    audioElement.play().catch(error => {
-                        console.log(`Failed to play sound (${audioElement.id}) even after retry:`, error);
-                    });
-                }, 50); 
+                console.log(`Failed to play sound (${audioElement.id}):`, error);
             });
         }
 
@@ -576,6 +548,7 @@ Prize #52</textarea>
 
         function initialize() {
             updateReels();
+            // เมื่อการหมุนของ Reel สุดท้าย (reel3) สิ้นสุดลง ให้เรียก handleSpinEnd
             document.getElementById('reel3').addEventListener('transitionend', handleSpinEnd);
         }
         
@@ -611,7 +584,7 @@ Prize #52</textarea>
                 reel.style.transform = 'translateY(0)';
                 
                 if (allItems.length > 0) {
-                    // ปรับ: ลดจำนวนรอบการทำซ้ำเพื่อให้เบาลง และปรับค่า offset
+                    // ทำซ้ำรายการหลายๆ ครั้งเพื่อให้มีการหมุนได้
                     const repeated = Array(5).fill(allItems).flat(); 
                     repeated.forEach(item => {
                         const div = document.createElement('div');
@@ -638,19 +611,19 @@ Prize #52</textarea>
         }
         
         function stopSpinSound() {
-            // ฟังก์ชันหยุดเสียงหมุน
             spinSound.pause();
-            spinSound.currentTime = 0; // รีเซ็ตเวลาให้เริ่มใหม่ในการกดครั้งต่อไป
+            spinSound.currentTime = 0; 
         }
 
         function handleSpinEnd(e) {
+            // ตรวจสอบให้แน่ใจว่าเป็น transition end ของ reel สุดท้าย
             if (e.propertyName !== 'transform' || e.target.id !== 'reel3') return;
             
             stopSpinSound(); // หยุดเสียงหมุนทันที
             
-            // เล่นเสียงชนะ (Tada) และ Jackpot Sound ด้วย safePlay
+            // **เล่นเสียงเฉลิมฉลอง (Win Sound และ Jackpot Sound) ได้อย่างปลอดภัย**
             safePlay(winSound);
-            safePlay(jackpotSound); // เพิ่ม: เล่นเสียง Jackpot
+            safePlay(jackpotSound); 
 
             const resultDiv = document.getElementById('result');
             resultDiv.textContent = currentWinner.name + ' 🥳';
@@ -681,27 +654,30 @@ Prize #52</textarea>
             resultDiv.classList.remove('winner-display');
             resultDiv.textContent = 'ROLLING...';
 
-            // เริ่มเล่นเสียงหมุนใหม่ทุกครั้งที่กด SPN ด้วย safePlay
+            // เริ่มเล่นเสียงหมุน
             safePlay(spinSound);
             
+            // เลือกผู้ชนะ
             const winnerIndex = Math.floor(Math.random() * allItems.length);
             currentWinner = allItems[winnerIndex];
             
             const itemCount = allItems.length;
-            const itemOffset = winnerIndex;
+            
+            // คำนวณตำแหน่งการหยุดที่ต้องการ: (จำนวนรอบ * จำนวนรายการ) + ตำแหน่งผู้ชนะ
+            const repeatCycle = 4; 
+            const stopIndex = (repeatCycle * itemCount) + winnerIndex; 
+            const finalTranslateY = stopIndex * reelHeight;
             
             REELS.forEach((id, index) => {
                 const reel = document.getElementById(id);
-                // ปรับ: ลดจำนวนรอบการทำซ้ำให้สอดคล้องกับ updateReels() และเพิ่มรอบจริงให้มากพอ (4 รอบเต็ม + ค่าที่หยุด)
-                const repeatCycle = 4; // จำนวนรอบที่หมุนเต็ม
-                const stopIndex = (repeatCycle * itemCount) + itemOffset;
-                const finalTranslateY = stopIndex * reelHeight;
-                const duration = SPIN_DURATION_MS + (index * 500);
                 
                 reel.style.transition = 'none';
                 reel.style.transform = 'translateY(0)';
                 
+                // ตั้งเวลาให้แต่ละ Reel เริ่มหมุนเล็กน้อย
                 setTimeout(() => {
+                    // กำหนด transition/animation timing function สำหรับการหยุดที่นุ่มนวล
+                    const duration = SPIN_DURATION_MS + (index * 500); // Reel หลังจะหมุนนานขึ้น
                     reel.style.transition = `transform ${duration / 1000}s cubic-bezier(0.1, 0.7, 0.4, 1)`;
                     reel.style.transform = `translateY(-${finalTranslateY}px)`;
                 }, 10 + (index * 50));
@@ -713,6 +689,7 @@ Prize #52</textarea>
             overlay.style.display = 'flex';
             setTimeout(() => { overlay.style.opacity = '1'; }, 50);
             
+            // สร้าง Confetti
             for (let i = 0; i < 150; i++) {
                 const c = document.createElement('div');
                 c.className = 'confetti-piece';
@@ -727,6 +704,7 @@ Prize #52</textarea>
                 overlay.appendChild(c);
             }
 
+            // ซ่อน Overlay หลังแสดงผล 3.5 วินาที
             setTimeout(() => {
                 overlay.style.opacity = '0';
                 setTimeout(() => {
@@ -745,25 +723,26 @@ Prize #52</textarea>
             document.getElementById('confirmPopup').style.display = 'none';
             drawButton.disabled = false;
             
-            // หยุด Win Sound และ Jackpot Sound เมื่อผู้ใช้คลิก Remove/Keep
+            // หยุด Win Sound และ Jackpot Sound
             winSound.pause();
             winSound.currentTime = 0;
-            jackpotSound.pause(); // หยุด Jackpot Sound
+            jackpotSound.pause(); 
             jackpotSound.currentTime = 0;
 
             if (shouldRemove) {
                 const textarea = document.getElementById('items');
                 const currentNames = textarea.value.split('\n').map(i => i.trim()).filter(i => i.length > 0);
+                // ลบชื่อผู้ชนะออกจากรายการ
                 const updated = currentNames.filter(n => n !== currentWinner.name);
                 textarea.value = updated.join('\n');
-                currentWinner = { name: '', image: '' };
+                currentWinner = { name: '', symbol: '' };
                 document.getElementById('result').textContent = 'Name removed! Spin again...';
             } else {
-                currentWinner = { name: '', image: '' };
+                currentWinner = { name: '', symbol: '' };
                 document.getElementById('result').textContent = 'Name kept! Spin again...';
             }
             document.getElementById('result').classList.remove('winner-display');
-            updateReels(); 
+            updateReels(); // โหลดรายการใหม่ (หากลบออก)
         }
     </script>
 </body>
