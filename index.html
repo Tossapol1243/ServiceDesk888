@@ -6,7 +6,7 @@
     <title>🎰 ServiceDesk 888</title>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* --- CSS STYLES (ไม่มีการเปลี่ยนแปลงจากที่ปรับปรุงล่าสุด) --- */
+        /* --- CSS STYLES (ไม่มีการเปลี่ยนแปลง) --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
@@ -502,7 +502,7 @@ Prize #52</textarea>
     </div>
     <div id="confirmPopup" class="confirm-popup">
         <div class="popup-content">
-            <p>Remove "<span id="winnerNameDisplay" style="color:#ffd700;"></span>" from list?</p>
+            <p>Remove Prize "<span id="winnerNameDisplay" style="color:#ffd700;"></span>" from list?</p>
             <div class="popup-buttons">
                 <button id="confirmRemove" onclick="handleConfirmation(true)">REMOVE</button>
                 <button id="cancelRemove" onclick="handleConfirmation(false)">KEEP</button>
@@ -510,30 +510,27 @@ Prize #52</textarea>
         </div>
     </div>
     <script>
-        let currentWinner = { name: '', symbol: '' }; // แก้ไขให้มี symbol ด้วย
+        let currentWinner = { name: '', symbol: '' };
         let allItems = [];
         const reelHeight = 170;
         const SPIN_DURATION_MS = 6000;
         const REELS = ['reel1', 'reel2', 'reel3'];
         let drawButton = document.getElementById('drawButton');
 
-        // ดึง Audio Elements สำหรับ Spin, Win และ Jackpot
         const spinSound = document.getElementById('spinSound');
         const winSound = document.getElementById('winSound');
         const jackpotSound = document.getElementById('jackpotSound'); 
         
-        spinSound.volume = 0.5; // เสียงหมุน
-        winSound.volume = 0.7;  // เสียงชนะ (Tada)
-        jackpotSound.volume = 0.9; // เสียง Conga Drum Roll
+        spinSound.volume = 0.5;
+        winSound.volume = 0.7;
+        jackpotSound.volume = 0.9;
 
-        // ฟังก์ชันสำหรับควบคุมการเล่นซ้ำของ Spin Sound
         spinSound.addEventListener('ended', function() {
             this.currentTime = 0; 
             this.play().catch(error => console.log("Spin Sound Loop Failed:", error));
         }, false);
         
-        // **ปรับปรุง: ฟังก์ชัน helper เพื่อพยายามเล่นเสียงอย่างปลอดภัย**
-        // การปลดล็อกเสียงจะเกิดขึ้นเมื่อมีการคลิกครั้งแรกใน startDraw
+        // ฟังก์ชัน helper เพื่อพยายามเล่นเสียงอย่างปลอดภัย
         function safePlay(audioElement) {
             audioElement.currentTime = 0;
             audioElement.play().catch(error => {
@@ -548,7 +545,6 @@ Prize #52</textarea>
 
         function initialize() {
             updateReels();
-            // เมื่อการหมุนของ Reel สุดท้าย (reel3) สิ้นสุดลง ให้เรียก handleSpinEnd
             document.getElementById('reel3').addEventListener('transitionend', handleSpinEnd);
         }
         
@@ -584,7 +580,6 @@ Prize #52</textarea>
                 reel.style.transform = 'translateY(0)';
                 
                 if (allItems.length > 0) {
-                    // ทำซ้ำรายการหลายๆ ครั้งเพื่อให้มีการหมุนได้
                     const repeated = Array(5).fill(allItems).flat(); 
                     repeated.forEach(item => {
                         const div = document.createElement('div');
@@ -616,12 +611,11 @@ Prize #52</textarea>
         }
 
         function handleSpinEnd(e) {
-            // ตรวจสอบให้แน่ใจว่าเป็น transition end ของ reel สุดท้าย
             if (e.propertyName !== 'transform' || e.target.id !== 'reel3') return;
             
             stopSpinSound(); // หยุดเสียงหมุนทันที
             
-            // **เล่นเสียงเฉลิมฉลอง (Win Sound และ Jackpot Sound) ได้อย่างปลอดภัย**
+            // **การเรียกเสียงเฉลิมฉลอง: เล่นพร้อมกัน**
             safePlay(winSound);
             safePlay(jackpotSound); 
 
@@ -654,16 +648,13 @@ Prize #52</textarea>
             resultDiv.classList.remove('winner-display');
             resultDiv.textContent = 'ROLLING...';
 
-            // เริ่มเล่นเสียงหมุน
             safePlay(spinSound);
             
-            // เลือกผู้ชนะ
             const winnerIndex = Math.floor(Math.random() * allItems.length);
             currentWinner = allItems[winnerIndex];
             
             const itemCount = allItems.length;
             
-            // คำนวณตำแหน่งการหยุดที่ต้องการ: (จำนวนรอบ * จำนวนรายการ) + ตำแหน่งผู้ชนะ
             const repeatCycle = 4; 
             const stopIndex = (repeatCycle * itemCount) + winnerIndex; 
             const finalTranslateY = stopIndex * reelHeight;
@@ -674,10 +665,8 @@ Prize #52</textarea>
                 reel.style.transition = 'none';
                 reel.style.transform = 'translateY(0)';
                 
-                // ตั้งเวลาให้แต่ละ Reel เริ่มหมุนเล็กน้อย
                 setTimeout(() => {
-                    // กำหนด transition/animation timing function สำหรับการหยุดที่นุ่มนวล
-                    const duration = SPIN_DURATION_MS + (index * 500); // Reel หลังจะหมุนนานขึ้น
+                    const duration = SPIN_DURATION_MS + (index * 500); 
                     reel.style.transition = `transform ${duration / 1000}s cubic-bezier(0.1, 0.7, 0.4, 1)`;
                     reel.style.transform = `translateY(-${finalTranslateY}px)`;
                 }, 10 + (index * 50));
@@ -689,7 +678,6 @@ Prize #52</textarea>
             overlay.style.display = 'flex';
             setTimeout(() => { overlay.style.opacity = '1'; }, 50);
             
-            // สร้าง Confetti
             for (let i = 0; i < 150; i++) {
                 const c = document.createElement('div');
                 c.className = 'confetti-piece';
@@ -704,7 +692,6 @@ Prize #52</textarea>
                 overlay.appendChild(c);
             }
 
-            // ซ่อน Overlay หลังแสดงผล 3.5 วินาที
             setTimeout(() => {
                 overlay.style.opacity = '0';
                 setTimeout(() => {
@@ -732,17 +719,17 @@ Prize #52</textarea>
             if (shouldRemove) {
                 const textarea = document.getElementById('items');
                 const currentNames = textarea.value.split('\n').map(i => i.trim()).filter(i => i.length > 0);
-                // ลบชื่อผู้ชนะออกจากรายการ
                 const updated = currentNames.filter(n => n !== currentWinner.name);
                 textarea.value = updated.join('\n');
                 currentWinner = { name: '', symbol: '' };
-                document.getElementById('result').textContent = 'Name removed! Spin again...';
+                // **แก้ไขข้อความตามที่ร้องขอ**
+                document.getElementById('result').textContent = 'Prize ReMoved! Spin Again...';
             } else {
                 currentWinner = { name: '', symbol: '' };
                 document.getElementById('result').textContent = 'Name kept! Spin again...';
             }
             document.getElementById('result').classList.remove('winner-display');
-            updateReels(); // โหลดรายการใหม่ (หากลบออก)
+            updateReels(); 
         }
     </script>
 </body>
