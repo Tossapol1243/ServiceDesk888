@@ -537,7 +537,7 @@ Prize #52</textarea>
             winSound.muted = false;
             jackpotSound.muted = false;
             
-            // 2. สั่งเล่นเสียง (เสียงควรเริ่มเล่นจากตำแหน่ง 0 หรือต่อเนื่องจากที่เคยถูก play/pause ไว้ใน initialize)
+            // 2. สั่งเล่นเสียง (เสียงควรเล่นได้ทันทีเพราะ Audio Context ถูกปลดบล็อกใน startDraw แล้ว)
             winSound.currentTime = 0;
             jackpotSound.currentTime = 0;
             winSound.play().catch(error => console.error("Failed to play win sound:", error));
@@ -564,16 +564,13 @@ Prize #52</textarea>
         document.addEventListener('DOMContentLoaded', initialize);
 
         function initialize() {
-            // ให้เสียงเฉลิมฉลองเริ่มเล่นแบบเงียบ ๆ เมื่อหน้าโหลดเสร็จ (เพื่อป้องกันการ Block ของเบราว์เซอร์)
-            // *** การตั้งค่า muted = true และสั่ง play() ใน User Gesture แรกที่โหลด (คือเมื่อคลิกปุ่ม "SPIN" ครั้งแรก) จะช่วยแก้ปัญหา
+            // ให้เสียงเฉลิมฉลองเริ่มเล่นแบบเงียบ ๆ เมื่อหน้าโหลดเสร็จ (ป้องกันการ Block)
+            // *** เพิ่มการตั้งค่า muted เป็น true เพื่อป้องกันการเล่นเสียงทันที
             winSound.muted = true;
             jackpotSound.muted = true;
             
-            // พยายามเล่นเสียงแบบเงียบๆ เพื่อให้เบราว์เซอร์ "ปลดบล็อก" Audio Contexts
-            // ซึ่งจะเกิดขึ้นเมื่อผู้ใช้คลิกปุ่ม "SPIN" ครั้งแรก
-            winSound.play().catch(e => console.log("Win sound pre-load/warmup failed:", e));
-            jackpotSound.play().catch(e => console.log("Jackpot sound pre-load/warmup failed:", e));
-
+            // ไม่ต้องพยายาม play/pause ใน initialize เพราะมันจะถูกทำใน startDraw() ด้วย User Gesture
+            
             updateReels();
             document.getElementById('reel3').addEventListener('transitionend', handleSpinEnd);
         }
@@ -673,6 +670,14 @@ Prize #52</textarea>
             drawButton.disabled = true;
             resultDiv.classList.remove('winner-display');
             resultDiv.textContent = 'ROLLING...';
+
+            // **ส่วนที่ 1: การเปิดใช้งาน Audio Context ด้วย User Gesture**
+            // สั่งให้เสียงเฉลิมฉลองเล่นแบบเงียบ ๆ แล้วหยุดทันที (ใช้ Promise เพื่อให้แน่ใจว่า pause ทำงานหลัง play)
+            winSound.muted = true;
+            jackpotSound.muted = true;
+            winSound.play().then(() => winSound.pause()).catch(e => console.error("Win sound warmup failed (ignore if first click):", e));
+            jackpotSound.play().then(() => jackpotSound.pause()).catch(e => console.error("Jackpot sound warmup failed (ignore if first click):", e));
+
 
             // เริ่มเล่นเสียงหมุนเมื่อคลิก (รับประกันการทำงาน)
             startSpinSound();
