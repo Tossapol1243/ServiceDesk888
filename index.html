@@ -414,8 +414,7 @@
 </head>
 <body>
     <audio id="spinSound" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3" preload="auto" volume="0.5"></audio>
-    <audio id="winSound" src="https://pub-841961e57c664b3896504a50b7310034.r2.dev/tada.mp3" muted loop preload="auto"></audio>
-    <audio id="jackpotSound" src="https://pub-841961e57c664b3896504a50b7310034.r2.dev/conga_drum_roll.mp3" muted loop preload="auto"></audio>
+    <audio id="celebrationSound" src="https://pub-841961e57c664b3896504a50b7310034.r2.dev/long_celebration.mp3" muted loop preload="auto"></audio>
 
     <div class="container">
         <h1>ServiceDesk 888</h1>
@@ -518,8 +517,8 @@ Prize #52</textarea>
 
         // --- Audio Controls (Simplified) ---
         const spinSound = document.getElementById('spinSound');
-        const winSound = document.getElementById('winSound');
-        const jackpotSound = document.getElementById('jackpotSound');
+        // ใช้ไฟล์เดียวสำหรับการเฉลิมฉลอง
+        const celebrationSound = document.getElementById('celebrationSound');
 
         function startSpinSound() {
             spinSound.currentTime = 0;
@@ -531,31 +530,25 @@ Prize #52</textarea>
             spinSound.currentTime = 0; 
         }
 
-        // ฟังก์ชัน Celebration ถูกแก้ไขเพื่อเปิดใช้งานเสียง
+        // ฟังก์ชัน Celebration ถูกแก้ไขให้ใช้ไฟล์เสียงเดียว
         function playCelebrationSound() {
             // 1. นำเสียงออกจากสถานะ muted
-            winSound.muted = false;
-            jackpotSound.muted = false;
+            celebrationSound.muted = false;
             
             // 2. สั่งเล่นเสียง (เสียงควรเล่นได้ทันทีเพราะ Audio Context ถูกปลดบล็อกใน startDraw แล้ว)
-            winSound.currentTime = 0;
-            jackpotSound.currentTime = 0;
-            winSound.play().catch(error => console.error("Failed to play win sound:", error));
-            jackpotSound.play().catch(error => console.error("Failed to play jackpot sound:", error));
-            console.log("Celebration sounds activated.");
+            celebrationSound.currentTime = 0;
+            celebrationSound.play().catch(error => console.error("Failed to play celebration sound:", error));
+            console.log("Celebration sound activated.");
         }
         
         function stopCelebrationSounds() {
             // 1. สั่งหยุดเสียง
-            winSound.pause();
-            jackpotSound.pause();
+            celebrationSound.pause();
             
             // 2. ตั้งค่ากลับไปที่ muted และรีเซ็ตตำแหน่ง
-            winSound.muted = true;
-            jackpotSound.muted = true;
-            winSound.currentTime = 0;
-            jackpotSound.currentTime = 0;
-            console.log("Celebration sounds stopped and muted.");
+            celebrationSound.muted = true;
+            celebrationSound.currentTime = 0;
+            console.log("Celebration sound stopped and muted.");
         }
         // ------------------------------------------
 
@@ -564,12 +557,10 @@ Prize #52</textarea>
         document.addEventListener('DOMContentLoaded', initialize);
 
         function initialize() {
-            // ให้เสียงเฉลิมฉลองเริ่มเล่นแบบเงียบ ๆ เมื่อหน้าโหลดเสร็จ (ป้องกันการ Block)
             // *** เพิ่มการตั้งค่า muted เป็น true เพื่อป้องกันการเล่นเสียงทันที
-            winSound.muted = true;
-            jackpotSound.muted = true;
+            celebrationSound.muted = true;
             
-            // ไม่ต้องพยายาม play/pause ใน initialize เพราะมันจะถูกทำใน startDraw() ด้วย User Gesture
+            // ไม่ต้องพยายาม play/pause ใน initialize 
             
             updateReels();
             document.getElementById('reel3').addEventListener('transitionend', handleSpinEnd);
@@ -671,12 +662,10 @@ Prize #52</textarea>
             resultDiv.classList.remove('winner-display');
             resultDiv.textContent = 'ROLLING...';
 
-            // **ส่วนที่ 1: การเปิดใช้งาน Audio Context ด้วย User Gesture**
-            // สั่งให้เสียงเฉลิมฉลองเล่นแบบเงียบ ๆ แล้วหยุดทันที (ใช้ Promise เพื่อให้แน่ใจว่า pause ทำงานหลัง play)
-            winSound.muted = true;
-            jackpotSound.muted = true;
-            winSound.play().then(() => winSound.pause()).catch(e => console.error("Win sound warmup failed (ignore if first click):", e));
-            jackpotSound.play().then(() => jackpotSound.pause()).catch(e => console.error("Jackpot sound warmup failed (ignore if first click):", e));
+            // **ส่วนที่ 1: การเปิดใช้งาน Audio Context ด้วย User Gesture (ไฟล์เดียว)**
+            // สั่งให้เสียงเฉลิมฉลองเล่นแบบเงียบ ๆ แล้วหยุดทันที
+            celebrationSound.muted = true;
+            celebrationSound.play().then(() => celebrationSound.pause()).catch(e => console.error("Celebration sound warmup failed (ignore if first click):", e));
 
 
             // เริ่มเล่นเสียงหมุนเมื่อคลิก (รับประกันการทำงาน)
