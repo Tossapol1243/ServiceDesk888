@@ -524,9 +524,6 @@ Prize #52</textarea>
         function startSpinSound() {
             spinSound.currentTime = 0;
             spinSound.play().catch(error => console.error("Failed to play spin sound (Click OK):", error));
-            
-            // เนื่องจากคุณต้องการความเสถียรสูงสุด เราจะปล่อยให้เสียงหยุดเอง
-            // หรือเล่นแค่ 3 วินาทีตามที่เคยเป็น เพื่อไม่ให้เกิดการค้าง
         }
 
         function stopSpinSound() {
@@ -536,19 +533,24 @@ Prize #52</textarea>
 
         // ฟังก์ชัน Celebration ถูกแก้ไขเพื่อเปิดใช้งานเสียง
         function playCelebrationSound() {
-            // เปิดใช้งานเสียงเฉลิมฉลอง
+            // 1. นำเสียงออกจากสถานะ muted
             winSound.muted = false;
             jackpotSound.muted = false;
+            
+            // 2. สั่งเล่นเสียง (เสียงควรเริ่มเล่นจากตำแหน่ง 0 หรือต่อเนื่องจากที่เคยถูก play/pause ไว้ใน initialize)
             winSound.currentTime = 0;
             jackpotSound.currentTime = 0;
             winSound.play().catch(error => console.error("Failed to play win sound:", error));
             jackpotSound.play().catch(error => console.error("Failed to play jackpot sound:", error));
             console.log("Celebration sounds activated.");
         }
+        
         function stopCelebrationSounds() {
-            // ปิดเสียงเฉลิมฉลองหลังจบคอมเฟิร์ม
+            // 1. สั่งหยุดเสียง
             winSound.pause();
             jackpotSound.pause();
+            
+            // 2. ตั้งค่ากลับไปที่ muted และรีเซ็ตตำแหน่ง
             winSound.muted = true;
             jackpotSound.muted = true;
             winSound.currentTime = 0;
@@ -562,12 +564,15 @@ Prize #52</textarea>
         document.addEventListener('DOMContentLoaded', initialize);
 
         function initialize() {
-            // ให้เสียงเฉลิมฉลองเริ่มเล่นแบบเงียบ ๆ เมื่อหน้าโหลดเสร็จ (ป้องกันการ Block)
-            // *** เพิ่มการตั้งค่า muted เป็น true เพื่อป้องกันการเล่นเสียงทันที
+            // ให้เสียงเฉลิมฉลองเริ่มเล่นแบบเงียบ ๆ เมื่อหน้าโหลดเสร็จ (เพื่อป้องกันการ Block ของเบราว์เซอร์)
+            // *** การตั้งค่า muted = true และสั่ง play() ใน User Gesture แรกที่โหลด (คือเมื่อคลิกปุ่ม "SPIN" ครั้งแรก) จะช่วยแก้ปัญหา
             winSound.muted = true;
             jackpotSound.muted = true;
-            winSound.play().catch(e => console.log("Win sound pre-load failed:", e));
-            jackpotSound.play().catch(e => console.log("Jackpot sound pre-load failed:", e));
+            
+            // พยายามเล่นเสียงแบบเงียบๆ เพื่อให้เบราว์เซอร์ "ปลดบล็อก" Audio Contexts
+            // ซึ่งจะเกิดขึ้นเมื่อผู้ใช้คลิกปุ่ม "SPIN" ครั้งแรก
+            winSound.play().catch(e => console.log("Win sound pre-load/warmup failed:", e));
+            jackpotSound.play().catch(e => console.log("Jackpot sound pre-load/warmup failed:", e));
 
             updateReels();
             document.getElementById('reel3').addEventListener('transitionend', handleSpinEnd);
