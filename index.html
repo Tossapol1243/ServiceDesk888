@@ -413,8 +413,6 @@
     </style>
 </head>
 <body>
-    <audio id="spinSound" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3" preload="auto" loop></audio>
-
     <div class="container">
         <h1>ServiceDesk 888</h1>
         <h2>🔥 Lucky Slot Machine 🔥</h2>
@@ -514,41 +512,41 @@ Prize #52</textarea>
         const REELS = ['reel1', 'reel2', 'reel3'];
         let drawButton = document.getElementById('drawButton');
 
-        // --- HTML Audio for Spin ---
-        const spinSound = document.getElementById('spinSound');
-        spinSound.volume = 0.5;
-
-        // --- WEB AUDIO API for Celebrations ---
+        // --- WEB AUDIO API SETUP (ใช้สำหรับทุกเสียง) ---
         let audioContext = null;
         let soundBuffers = {};
         
-        // URL เสียง
+        let spinInterval = null; // สำหรับการควบคุม Spin Sound Loop
+
+        // Global references for celebration sound controllers
+        let jackpotGainNode = null;
+        let winGainNode = null;
+        let jackpotSource = null;
+        let winSource = null;
+        
         const SOUND_URLS = {
+            spin: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3",
             win: "https://pub-841961e57c664b3896504a50b7310034.r2.dev/tada.mp3",
             jackpot: "https://pub-841961e57c664b3896504a50b7310034.r2.dev/conga_drum_roll.mp3"
         };
         
-        // โหลดไฟล์เสียงทั้งหมด
         async function loadSound(url, name) {
             try {
                 const response = await fetch(url);
                 const arrayBuffer = await response.arrayBuffer();
                 const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
                 soundBuffers[name] = audioBuffer;
-                console.log(`Celebration Sound loaded: ${name}`);
+                console.log(`Sound loaded: ${name}`);
             } catch (error) {
-                console.error(`Error loading celebration sound ${name}:`, error);
+                console.error(`Error loading sound ${name}:`, error);
             }
         }
         
         // เล่นเสียงผ่าน Audio Context
-        let currentJackpotSource = null;
-        let currentWinSource = null;
-
-        function playCelebrationSound(name, volume = 1.0, loop = false, startDelay = 0) {
+        function createSoundSource(name, volume = 1.0, loop = false) {
             if (!soundBuffers[name]) {
                 console.warn(`Sound buffer for ${name} not loaded.`);
-                return null;
+                return { source: null, gain: null };
             }
             
             const source = audioContext.createBufferSource();
@@ -556,24 +554,12 @@ Prize #52</textarea>
             source.loop = loop;
 
             const gainNode = audioContext.createGain();
-            gainNode.gain.value = volume;
+            gainNode.gain.value = volume; // ตั้งค่า volume
             
             source.connect(gainNode);
             gainNode.connect(audioContext.destination);
 
-            source.start(audioContext.currentTime + startDelay);
-            return source; 
-        }
-
-        function stopCelebrationSounds() {
-            if (currentJackpotSource) {
-                currentJackpotSource.stop();
-                currentJackpotSource = null;
-            }
-            if (currentWinSource) {
-                currentWinSource.stop();
-                currentWinSource = null;
-            }
+            return { source, gain: gainNode };
         }
 
         // --- END WEB AUDIO API SETUP ---
@@ -583,27 +569,51 @@ Prize #52</textarea>
         document.addEventListener('DOMContentLoaded', initialize);
 
         async function initialize() {
-            // สร้าง Audio Context และโหลดเสียงเฉลิมฉลอง
             audioContext = new (window.AudioContext || window.webkitAudioContext)();
             
+            // โหลดเสียงทั้งหมด
             await Promise.all([
+                loadSound(SOUND_URLS.spin, 'spin'),
                 loadSound(SOUND_URLS.win, 'win'),
                 loadSound(SOUND_URLS.jackpot, 'jackpot')
             ]);
             
-            // ปลดล็อค Audio Context ด้วยการคลิก
-            drawButton.addEventListener('click', () => {
-                if (audioContext.state === 'suspended') {
-                    audioContext.resume().then(() => {
-                        console.log('AudioContext resumed successfully.');
-                    });
-                }
-            }, { once: true }); // ปลดล็อคครั้งเดียวพอ
-
+            // **ปลดล็อค Audio Context ด้วยการคลิกครั้งแรกและเริ่มเล่นเสียงเฉลิมฉลอง Volume 0**
+            drawButton.addEventListener('click', initializeSounds, { once: true });
+            
             updateReels();
             document.getElementById('reel3').addEventListener('transitionend', handleSpinEnd);
         }
+
+        function initializeSounds() {
+            if (audioContext.state === 'suspended') {
+                audioContext.resume().then(() => {
+                    console.log('AudioContext resumed successfully.');
+                    // เริ่มเล่นเสียงเฉลิมฉลองด้วย Volume 0
+                    startCelebrationSoundsSilent();
+                });
+            } else {
+                startCelebrationSoundsSilent();
+            }
+        }
         
+        // ฟังก์ชันเริ่มเล่นเสียงเฉลิมฉลองด้วย Volume 0
+        function startCelebrationSoundsSilent() {
+            // Jackpot Drum Roll (เล่นซ้ำ)
+            const jackpotControls = createSoundSource('jackpot', 0, true); 
+            jackpotSource = jackpotControls.source;
+            jackpotGainNode = jackpotControls.gain;
+            jackpotSource.start(0);
+
+            // Win Sound (เล่นซ้ำ)
+            const winControls = createSoundSource('win', 0, true); 
+            winSource = winControls.source;
+            winGainNode = winControls.gain;
+            winSource.start(0); 
+            
+            console.log("Celebration Sounds initialized and playing silently.");
+        }
+
         function updateStatusBoard(currentList) {
             const count = currentList.length;
             const initialCount = 52;
@@ -621,6 +631,7 @@ Prize #52</textarea>
         }
 
         function updateReels() {
+            // ... (โค้ด updateReels เหมือนเดิม)
             const textarea = document.getElementById('items');
             const rawNames = textarea.value.split('\n').map(i => i.trim()).filter(i => i.length > 0);
             
@@ -661,9 +672,49 @@ Prize #52</textarea>
             updateStatusBoard(rawNames);
         }
         
+        // **ใช้ Web Audio API สำหรับ Spin Sound Loop**
+        function startSpinSoundLoop() {
+            stopSpinSound();
+            const SPIN_VOLUME = 0.5;
+
+            // เล่นเสียง Spin ซ้ำทุก 3 วินาที (เพื่อให้แน่ใจว่าลูป)
+            function playSpin() {
+                const spinControls = createSoundSource('spin', SPIN_VOLUME, false);
+                spinControls.source.start(0);
+            }
+
+            // เล่นครั้งแรกทันที
+            playSpin(); 
+            // ตั้ง Loop
+            spinInterval = setInterval(playSpin, 2900); // 2.9 วินาทีเพื่อคาบเกี่ยวเล็กน้อย
+        }
+
         function stopSpinSound() {
-            spinSound.pause();
-            spinSound.currentTime = 0; 
+            if (spinInterval) {
+                clearInterval(spinInterval);
+                spinInterval = null;
+            }
+        }
+
+        function stopCelebrationSounds() {
+            // ทำให้เสียงค่อยๆ เงียบลง
+            if (jackpotGainNode) {
+                jackpotGainNode.gain.setValueAtTime(jackpotGainNode.gain.value, audioContext.currentTime);
+                jackpotGainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.5); // 0.5s fade
+            }
+            if (winGainNode) {
+                winGainNode.gain.setValueAtTime(winGainNode.gain.value, audioContext.currentTime);
+                winGainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.5);
+            }
+            
+            // หยุด Source จริงๆ หลังจาก Fade
+            setTimeout(() => {
+                if (jackpotSource) { jackpotSource.stop(); }
+                if (winSource) { winSource.stop(); }
+                // หลังจากหยุดแล้ว ต้องเริ่มเล่นใหม่แบบ Volume 0 ในการ Spin ครั้งถัดไป
+                // เนื่องจากเราใช้ {once: true} ใน initializeSounds เราจะเรียกมันอีกครั้ง
+                startCelebrationSoundsSilent();
+            }, 600);
         }
 
         function handleSpinEnd(e) {
@@ -671,12 +722,19 @@ Prize #52</textarea>
             
             stopSpinSound(); // หยุดเสียงหมุนทันที
 
-            // **เล่นเสียงเฉลิมฉลองผ่าน Web Audio API**
-            if (audioContext.state === 'running') {
-                currentJackpotSource = playCelebrationSound('jackpot', 0.9, false); 
-                currentWinSource = playCelebrationSound('win', 0.7, false, 0.5); // ดีเลย์เล็กน้อย
-            } else {
-                 console.warn("AudioContext not running, cannot play celebration sounds.");
+            // **เทคนิคการเล่นเสียงเฉลิมฉลอง: Fade In Volume**
+            if (jackpotGainNode && winGainNode) {
+                const JACKPOT_VOLUME = 0.9;
+                const WIN_VOLUME = 0.7;
+                
+                // Fade In Jackpot
+                jackpotGainNode.gain.setValueAtTime(0, audioContext.currentTime);
+                jackpotGainNode.gain.linearRampToValueAtTime(JACKPOT_VOLUME, audioContext.currentTime + 0.1);
+
+                // Fade In Win Sound after a short delay
+                const delayTime = 0.5;
+                winGainNode.gain.setValueAtTime(0, audioContext.currentTime + delayTime);
+                winGainNode.gain.linearRampToValueAtTime(WIN_VOLUME, audioContext.currentTime + delayTime + 0.1);
             }
             
 
@@ -692,7 +750,7 @@ Prize #52</textarea>
             drawButton.disabled = false;
             triggerJackpotAnimation();
             
-            // กำหนดเวลาหยุดเสียงเฉลิมฉลอง
+            // กำหนดเวลาหยุดเสียงเฉลิมฉลอง (ประมาณ 3.5 วินาที)
             setTimeout(() => {
                  stopCelebrationSounds(); 
                  showConfirmationPopup(); 
@@ -710,16 +768,14 @@ Prize #52</textarea>
                 return;
             }
             
-            stopCelebrationSounds(); // ตรวจสอบให้แน่ใจว่าเสียงเก่าถูกหยุด
+            stopCelebrationSounds(); // ตรวจสอบให้แน่ใจว่าเสียงเก่าถูกหยุดและ Volume ถูกตั้งเป็น 0
             
             drawButton.disabled = true;
             resultDiv.classList.remove('winner-display');
             resultDiv.textContent = 'ROLLING...';
 
-            // เริ่มเล่นเสียงหมุน (HTML Audio)
-            spinSound.play().catch(error => {
-                console.error("Failed to play spin sound:", error);
-            });
+            // เริ่มเล่นเสียงหมุนด้วย Loop Fix
+            startSpinSoundLoop();
 
             const winnerIndex = Math.floor(Math.random() * allItems.length);
             currentWinner = allItems[winnerIndex];
@@ -781,7 +837,6 @@ Prize #52</textarea>
             document.getElementById('confirmPopup').style.display = 'none';
             drawButton.disabled = false;
             
-            // หยุดเสียงเฉลิมฉลองทั้งหมด (เรียกอีกครั้งเพื่อความชัวร์)
             stopCelebrationSounds(); 
 
             if (shouldRemove) {
@@ -790,7 +845,7 @@ Prize #52</textarea>
                 const updated = currentNames.filter(n => n !== currentWinner.name);
                 textarea.value = updated.join('\n');
                 currentWinner = { name: '', symbol: '' };
-                // **ข้อความแก้ไขแล้ว**
+                // **ข้อความแก้ไขแล้ว: Prize ReMoved! Waiting for Next Spin...**
                 document.getElementById('result').textContent = 'Prize ReMoved! Waiting for Next Spin...';
             } else {
                 currentWinner = { name: '', symbol: '' };
