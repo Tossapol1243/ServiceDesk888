@@ -413,6 +413,8 @@
     </style>
 </head>
 <body>
+    <audio id="spinSound" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3" preload="auto" loop></audio>
+
     <div class="container">
         <h1>ServiceDesk 888</h1>
         <h2>🔥 Lucky Slot Machine 🔥</h2>
@@ -484,7 +486,7 @@ Prize #52</textarea>
             <div class="slot-container">
                 <div class="reel-wrapper"><div class="reel" id="reel1"></div></div>
                 <div class="reel-wrapper"><div class="reel" id="reel2"></div></div>
-                <div class="reel-wrapper"><div class="reel" id="reel3"></div></div>
+                <div class="reel-wrapper"><div the reel" id="reel3"></div></div>
             </div>
             <div class="slot-lever"></div>
         </div>
@@ -512,14 +514,16 @@ Prize #52</textarea>
         const REELS = ['reel1', 'reel2', 'reel3'];
         let drawButton = document.getElementById('drawButton');
 
-        // --- WEB AUDIO API SETUP ---
+        // --- HTML Audio for Spin ---
+        const spinSound = document.getElementById('spinSound');
+        spinSound.volume = 0.5;
+
+        // --- WEB AUDIO API for Celebrations ---
         let audioContext = null;
         let soundBuffers = {};
-        let currentSpinSource = null;
         
         // URL เสียง
         const SOUND_URLS = {
-            spin: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3",
             win: "https://pub-841961e57c664b3896504a50b7310034.r2.dev/tada.mp3",
             jackpot: "https://pub-841961e57c664b3896504a50b7310034.r2.dev/conga_drum_roll.mp3"
         };
@@ -531,14 +535,17 @@ Prize #52</textarea>
                 const arrayBuffer = await response.arrayBuffer();
                 const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
                 soundBuffers[name] = audioBuffer;
-                console.log(`Sound loaded: ${name}`);
+                console.log(`Celebration Sound loaded: ${name}`);
             } catch (error) {
-                console.error(`Error loading sound ${name}:`, error);
+                console.error(`Error loading celebration sound ${name}:`, error);
             }
         }
         
         // เล่นเสียงผ่าน Audio Context
-        function playSound(name, volume = 1.0, loop = false, startDelay = 0) {
+        let currentJackpotSource = null;
+        let currentWinSource = null;
+
+        function playCelebrationSound(name, volume = 1.0, loop = false, startDelay = 0) {
             if (!soundBuffers[name]) {
                 console.warn(`Sound buffer for ${name} not loaded.`);
                 return null;
@@ -555,8 +562,20 @@ Prize #52</textarea>
             gainNode.connect(audioContext.destination);
 
             source.start(audioContext.currentTime + startDelay);
-            return source; // ส่งคืน source เพื่อให้สามารถควบคุมหยุดได้
+            return source; 
         }
+
+        function stopCelebrationSounds() {
+            if (currentJackpotSource) {
+                currentJackpotSource.stop();
+                currentJackpotSource = null;
+            }
+            if (currentWinSource) {
+                currentWinSource.stop();
+                currentWinSource = null;
+            }
+        }
+
         // --- END WEB AUDIO API SETUP ---
 
         const slotSymbols = ['🍒', '🍋', '🍊', '🍉', '🍇', '⭐', '💎', '7️⃣', '🔔', '💰', '👑', '🍀', '🚀', '🎁', '🏆'];
@@ -564,20 +583,15 @@ Prize #52</textarea>
         document.addEventListener('DOMContentLoaded', initialize);
 
         async function initialize() {
-            // สร้าง Audio Context เมื่อหน้าเว็บโหลด (อาจยังอยู่ในสถานะ suspended)
+            // สร้าง Audio Context และโหลดเสียงเฉลิมฉลอง
             audioContext = new (window.AudioContext || window.webkitAudioContext)();
             
             await Promise.all([
-                loadSound(SOUND_URLS.spin, 'spin'),
                 loadSound(SOUND_URLS.win, 'win'),
                 loadSound(SOUND_URLS.jackpot, 'jackpot')
             ]);
-
-            updateReels();
-            document.getElementById('reel3').addEventListener('transitionend', handleSpinEnd);
             
-            // **เทคนิค: ปลดล็อก Audio Context ด้วยการคลิกครั้งแรก**
-            // หาก Context อยู่ในสถานะ Suspended การคลิกครั้งแรกจะเรียก resume()
+            // ปลดล็อค Audio Context ด้วยการคลิก
             drawButton.addEventListener('click', () => {
                 if (audioContext.state === 'suspended') {
                     audioContext.resume().then(() => {
@@ -585,6 +599,9 @@ Prize #52</textarea>
                     });
                 }
             }, { once: true }); // ปลดล็อคครั้งเดียวพอ
+
+            updateReels();
+            document.getElementById('reel3').addEventListener('transitionend', handleSpinEnd);
         }
         
         function updateStatusBoard(currentList) {
@@ -645,24 +662,8 @@ Prize #52</textarea>
         }
         
         function stopSpinSound() {
-            if (currentSpinSource) {
-                currentSpinSource.stop();
-                currentSpinSource = null;
-            }
-        }
-
-        let currentJackpotSource = null;
-        let currentWinSource = null;
-
-        function stopCelebrationSounds() {
-            if (currentJackpotSource) {
-                currentJackpotSource.stop();
-                currentJackpotSource = null;
-            }
-            if (currentWinSource) {
-                currentWinSource.stop();
-                currentWinSource = null;
-            }
+            spinSound.pause();
+            spinSound.currentTime = 0; 
         }
 
         function handleSpinEnd(e) {
@@ -670,12 +671,14 @@ Prize #52</textarea>
             
             stopSpinSound(); // หยุดเสียงหมุนทันที
 
-            // **การเล่นเสียงเฉลิมฉลองผ่าน Audio Context**
-            // Jackpot Drum Roll (เล่นซ้ำ 2 รอบ)
-            currentJackpotSource = playSound('jackpot', 0.9, false); 
+            // **เล่นเสียงเฉลิมฉลองผ่าน Web Audio API**
+            if (audioContext.state === 'running') {
+                currentJackpotSource = playCelebrationSound('jackpot', 0.9, false); 
+                currentWinSource = playCelebrationSound('win', 0.7, false, 0.5); // ดีเลย์เล็กน้อย
+            } else {
+                 console.warn("AudioContext not running, cannot play celebration sounds.");
+            }
             
-            // Win Sound (เล่นหลังจาก Jackpot เริ่ม 0.5 วินาที)
-            currentWinSource = playSound('win', 0.7, false, 0.5); 
 
             const resultDiv = document.getElementById('result');
             resultDiv.textContent = currentWinner.name + ' 🥳';
@@ -713,8 +716,10 @@ Prize #52</textarea>
             resultDiv.classList.remove('winner-display');
             resultDiv.textContent = 'ROLLING...';
 
-            // เริ่มเล่นเสียงหมุน (ลูป)
-            currentSpinSource = playSound('spin', 0.5, true); 
+            // เริ่มเล่นเสียงหมุน (HTML Audio)
+            spinSound.play().catch(error => {
+                console.error("Failed to play spin sound:", error);
+            });
 
             const winnerIndex = Math.floor(Math.random() * allItems.length);
             currentWinner = allItems[winnerIndex];
