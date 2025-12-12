@@ -534,13 +534,26 @@ Prize #52</textarea>
             spinSound.currentTime = 0; 
         }
 
-        // ฟังก์ชัน Celebration ถูกปิด
+        // ฟังก์ชัน Celebration ถูกแก้ไขเพื่อเปิดใช้งานเสียง
         function playCelebrationSound() {
-            // Muted - ไม่ทำอะไรเลยเพื่อความเสถียร
-            console.log("Celebration sound is muted for stability.");
+            // เปิดใช้งานเสียงเฉลิมฉลอง
+            winSound.muted = false;
+            jackpotSound.muted = false;
+            winSound.currentTime = 0;
+            jackpotSound.currentTime = 0;
+            winSound.play().catch(error => console.error("Failed to play win sound:", error));
+            jackpotSound.play().catch(error => console.error("Failed to play jackpot sound:", error));
+            console.log("Celebration sounds activated.");
         }
         function stopCelebrationSounds() {
-            // Muted - ไม่ทำอะไรเลย
+            // ปิดเสียงเฉลิมฉลองหลังจบคอมเฟิร์ม
+            winSound.pause();
+            jackpotSound.pause();
+            winSound.muted = true;
+            jackpotSound.muted = true;
+            winSound.currentTime = 0;
+            jackpotSound.currentTime = 0;
+            console.log("Celebration sounds stopped and muted.");
         }
         // ------------------------------------------
 
@@ -550,6 +563,9 @@ Prize #52</textarea>
 
         function initialize() {
             // ให้เสียงเฉลิมฉลองเริ่มเล่นแบบเงียบ ๆ เมื่อหน้าโหลดเสร็จ (ป้องกันการ Block)
+            // *** เพิ่มการตั้งค่า muted เป็น true เพื่อป้องกันการเล่นเสียงทันที
+            winSound.muted = true;
+            jackpotSound.muted = true;
             winSound.play().catch(e => console.log("Win sound pre-load failed:", e));
             jackpotSound.play().catch(e => console.log("Jackpot sound pre-load failed:", e));
 
@@ -618,7 +634,7 @@ Prize #52</textarea>
             if (e.propertyName !== 'transform' || e.target.id !== 'reel3') return;
             
             stopSpinSound(); 
-            playCelebrationSound(); // ฟังก์ชันนี้จะถูก Mute
+            playCelebrationSound(); // ฟังก์ชันนี้จะถูกเรียกให้เปิดเสียง Jackpot
 
             const resultDiv = document.getElementById('result');
             resultDiv.textContent = currentWinner.name + ' 🥳';
@@ -717,6 +733,7 @@ Prize #52</textarea>
 
         function handleConfirmation(shouldRemove) {
             document.getElementById('confirmPopup').style.display = 'none';
+            stopCelebrationSounds(); // หยุดเสียงเฉลิมฉลองเมื่อเลือกดำเนินการแล้ว
             drawButton.disabled = false;
             
             if (shouldRemove) {
