@@ -527,6 +527,7 @@ Prize #52</textarea>
 
         spinSound.addEventListener('ended', function() {
             this.currentTime = 0; 
+            // **เทคนิค: พยายามเล่นเสียง Spin ต่อเนื่องเพื่อรักษา "Audio Context" ที่ Active**
             this.play().catch(error => console.log("Spin Sound Loop Failed:", error));
         }, false);
         
@@ -534,6 +535,7 @@ Prize #52</textarea>
         function safePlay(audioElement) {
             audioElement.currentTime = 0;
             audioElement.play().catch(error => {
+                // หากยังคงมี Error (เช่น NotAllowedError) แสดงว่าเบราว์เซอร์ยังบล็อกอยู่
                 console.log(`Failed to play sound (${audioElement.id}):`, error);
             });
         }
@@ -615,9 +617,9 @@ Prize #52</textarea>
             
             stopSpinSound(); // หยุดเสียงหมุนทันที
             
-            // **การเรียกเสียงเฉลิมฉลอง: เล่นพร้อมกัน**
-            safePlay(winSound);
+            // **เรียกเสียงเฉลิมฉลอง (Jackpot ก่อน, Win ตามมา) เพื่อความต่อเนื่อง**
             safePlay(jackpotSound); 
+            setTimeout(() => { safePlay(winSound); }, 500); // ดีเลย์เล็กน้อย
 
             const resultDiv = document.getElementById('result');
             resultDiv.textContent = currentWinner.name + ' 🥳';
@@ -648,6 +650,7 @@ Prize #52</textarea>
             resultDiv.classList.remove('winner-display');
             resultDiv.textContent = 'ROLLING...';
 
+            // เริ่มเล่นเสียงหมุน (นี่คือการคลิกที่ได้รับอนุญาต)
             safePlay(spinSound);
             
             const winnerIndex = Math.floor(Math.random() * allItems.length);
@@ -710,7 +713,7 @@ Prize #52</textarea>
             document.getElementById('confirmPopup').style.display = 'none';
             drawButton.disabled = false;
             
-            // หยุด Win Sound และ Jackpot Sound
+            // หยุด Win Sound และ Jackpot Sound (หากยังเล่นอยู่)
             winSound.pause();
             winSound.currentTime = 0;
             jackpotSound.pause(); 
@@ -722,7 +725,7 @@ Prize #52</textarea>
                 const updated = currentNames.filter(n => n !== currentWinner.name);
                 textarea.value = updated.join('\n');
                 currentWinner = { name: '', symbol: '' };
-                // **แก้ไขข้อความตามที่ร้องขอ**
+                // **ข้อความแก้ไขแล้ว**
                 document.getElementById('result').textContent = 'Prize ReMoved! Spin Again...';
             } else {
                 currentWinner = { name: '', symbol: '' };
