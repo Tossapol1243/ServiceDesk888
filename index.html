@@ -3,426 +3,513 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎰 ServiceDesk 888 (Audio Fix)</title>
+    <title>🎰 ServiceDesk 888 - Premium Edition</title>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* --- CSS STYLES (ไม่เปลี่ยนแปลง) --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * [cite_start]{ margin: 0; [cite: 1]
+padding: 0; box-sizing: border-box; [cite_start]} [cite: 2]
         
         body {
-            font-family: 'Chakra Petch', 'Segoe UI', sans-serif;
-            display: flex;
+            [cite_start]font-family: 'Chakra Petch', 'Segoe UI', sans-serif; [cite: 2]
+[cite_start]display: flex; [cite: 3]
             align-items: center;
             justify-content: center;
             min-height: 95vh; 
-            width: 100vw; 
-            background: radial-gradient(circle at 20% 30%, #1a0a0a 0%, #000 50%), radial-gradient(circle at 80% 70%, #0a0a1a 0%, #000 50%);
-            color: #e0e0e0;
-            position: relative;
+            [cite_start]width: 100vw; [cite: 3]
+[cite_start]background: radial-gradient(circle at 20% 30%, #1a0a0a 0%, #000 50%), radial-gradient(circle at 80% 70%, #0a0a1a 0%, #000 50%); [cite: 4]
+            [cite_start]color: #e0e0e0; [cite: 4]
+[cite_start]position: relative; [cite: 5]
             overflow-x: hidden; 
         }
         body::before {
             content: '';
-            position: fixed;
+[cite_start][cite: 5]
+[cite_start]position: fixed; [cite: 6]
             top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: 
+            [cite_start]width: 100%; height: 100%; [cite: 6]
+background: 
                 radial-gradient(circle at 20% 50%, rgba(255,215,0,0.15), transparent 40%),
                 radial-gradient(circle at 80% 50%, rgba(255,69,0,0.15), transparent 40%),
-                radial-gradient(circle at 50% 20%, rgba(255,140,0,0.1), transparent 40%);
-            animation: bgPulse 3s ease-in-out infinite;
+                [cite_start]radial-gradient(circle at 50% 20%, rgba(255,140,0,0.1), transparent 40%); [cite: 7]
+[cite_start]animation: bgPulse 3s ease-in-out infinite; [cite: 8]
             pointer-events: none;
         }
         @keyframes bgPulse {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.1); }
+            [cite_start]0%, 100% { opacity: 0.3; [cite: 8]
+transform: scale(1); [cite_start]} [cite: 9]
+            [cite_start]50% { opacity: 0.8; transform: scale(1.1); [cite: 9, 10]
+}
         }
         body::after {
             content: '';
-            position: fixed;
+[cite_start][cite: 10]
+[cite_start]position: fixed; [cite: 11]
             top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: repeating-linear-gradient(
+            [cite_start]width: 200%; height: 200%; [cite: 11]
+background: repeating-linear-gradient(
                 0deg,
                 transparent,
                 transparent 2px,
                 rgba(255,215,0,0.03) 2px,
                 rgba(255,215,0,0.03) 4px
-            );
-            animation: scanlines 8s linear infinite;
+            [cite_start]); [cite: 12]
+[cite_start]animation: scanlines 8s linear infinite; [cite: 13]
             pointer-events: none;
         }
         @keyframes scanlines {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(50px); }
+            [cite_start]0% { transform: translateY(0); [cite: 13, 14]
+}
+            [cite_start]100% { transform: translateY(50px); [cite: 14, 15]
+}
         }
         .container {
-            background: linear-gradient(135deg, rgba(30,30,30,0.95), rgba(15,15,15,0.98));
-            padding: 30px 60px;
+            [cite_start]background: linear-gradient(135deg, rgba(30,30,30,0.95), rgba(15,15,15,0.98)); [cite: 15, 16]
+[cite_start]padding: 30px 60px; [cite: 16]
             border-radius: 20px;
             box-shadow: 
                 0 0 80px rgba(255,215,0,0.6),
                 0 0 120px rgba(255,69,0,0.4),
                 inset 0 0 60px rgba(0,0,0,0.8);
-            text-align: center;
+            [cite_start]text-align: center; [cite: 17]
             max-width: 950px; 
             width: 90vw;
             border: 4px solid #ffd700;
             position: relative;
-            animation: containerGlow 2s ease-in-out infinite;
-        }
+            [cite_start]animation: containerGlow 2s ease-in-out infinite; [cite: 17, 18]
+}
         @keyframes containerGlow {
             0%, 100% { 
                 box-shadow: 
                     0 0 80px rgba(255,215,0,0.6),
                     0 0 120px rgba(255,69,0,0.4),
-                    inset 0 0 60px rgba(0,0,0,0.8);
-                border-color: #ffd700;
-            }
+            
+[cite_start][cite: 18, 19]         inset 0 0 60px rgba(0,0,0,0.8);
+                [cite_start]border-color: #ffd700; [cite: 19, 20]
+}
             50% { 
                 box-shadow: 
                     0 0 120px rgba(255,215,0,0.9),
                     0 0 160px rgba(255,69,0,0.7),
-                    inset 0 0 80px rgba(255,69,0,0.3);
+                    inset 0 0 
+[cite_start][cite: 20, 21] 80px rgba(255,69,0,0.3);
                 border-color: #ff4500;
             }
         }
         .container::before {
-            content: '';
-            position: absolute;
+            [cite_start]content: ''; [cite: 21]
+[cite_start]position: absolute; [cite: 22]
             top: -10px; left: -10px; right: -10px; bottom: -10px;
-            background: linear-gradient(45deg, 
-                #ffd700 0%, #ff4500 25%, #ffd700 50%, #ff8c00 75%, #ffd700 100%);
-            border-radius: 25px;
+[cite_start][cite: 22]
+background: linear-gradient(45deg, 
+                [cite_start]#ffd700 0%, #ff4500 25%, #ffd700 50%, #ff8c00 75%, #ffd700 100%); [cite: 23]
+[cite_start]border-radius: 25px; [cite: 24]
             z-index: -1;
             animation: borderRotate 4s linear infinite;
-            opacity: 0.8;
-        }
+            [cite_start]opacity: 0.8; [cite: 24, 25]
+}
         @keyframes borderRotate {
-            0% { filter: hue-rotate(0deg) brightness(1); }
-            50% { filter: hue-rotate(90deg) brightness(1.5); }
-            100% { filter: hue-rotate(0deg) brightness(1); }
+            [cite_start]0% { filter: hue-rotate(0deg) brightness(1); [cite: 25, 26]
+}
+            [cite_start]50% { filter: hue-rotate(90deg) brightness(1.5); [cite: 26, 27]
+}
+            [cite_start]100% { filter: hue-rotate(0deg) brightness(1); [cite: 27, 28]
+}
         }
         h1 { 
-            color: #ffd700; 
-            font-size: 3.5em; 
+            [cite_start]color: #ffd700; [cite: 28, 29]
+font-size: 3.5em; 
             text-shadow: 
                 0 0 20px #ffd700,
                 0 0 40px #ff4500,
                 0 0 80px #ff8c00,
                 0 0 120px #ffd700;
-            font-weight: 700; 
+[cite_start][cite: 29]
+[cite_start]font-weight: 700; [cite: 30]
             margin-bottom: 10px;
             animation: titleFlash 1.5s ease-in-out infinite;
-            font-family: Arial, sans-serif;
-        }
+            [cite_start]font-family: Arial, sans-serif; [cite: 30, 31]
+}
         @keyframes titleFlash {
             0%, 100% { 
                 text-shadow: 
                     0 0 20px #ffd700,
                     0 0 40px #ff4500,
-                    0 0 60px #ff8c00;
+            
+[cite_start][cite: 31, 32]         0 0 60px #ff8c00;
                 transform: scale(1);
-                color: #ffd700;
-            }
+                [cite_start]color: #ffd700; [cite: 32, 33]
+}
             50% { 
                 text-shadow: 
                     0 0 40px #ffd700,
                     0 0 80px #ff4500,
-                    0 0 120px #ff8c00,
-                    0 0 160px #ffd700;
-                transform: scale(1.05);
+                    0 0 120px 
+[cite_start][cite: 33, 34] #ff8c00,
+                    [cite_start]0 0 160px #ffd700; [cite: 34, 35]
+transform: scale(1.05);
                 color: #fff;
             }
         }
         h2 { 
-            color: #ff8c00; 
-            font-size: 1.3em; 
+            [cite_start]color: #ff8c00; [cite: 35, 36]
+font-size: 1.3em; 
             margin-bottom: 30px;
             text-shadow: 0 0 20px #ff4500;
             animation: subtitlePulse 2s ease-in-out infinite;
-            font-family: Arial, sans-serif;
-        }
+            [cite_start]font-family: Arial, sans-serif; [cite: 36, 37]
+}
         @keyframes subtitlePulse {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 1; text-shadow: 0 0 30px #ff4500, 0 0 50px #ffd700; }
+            [cite_start]0%, 100% { opacity: 0.8; [cite: 37, 38]
+}
+            [cite_start]50% { opacity: 1; [cite: 38, 39]
+text-shadow: 0 0 30px #ff4500, 0 0 50px #ffd700; }
         }
         .input-area { 
-            margin-bottom: 40px; 
-        }
+            [cite_start]margin-bottom: 40px; [cite: 39, 40]
+}
         
         #items { 
-            display: none !important; 
-        }
-        .input-area label { display: none; } 
+            [cite_start]display: none !important; [cite: 40, 41]
+}
+        [cite_start].input-area label { display: none; [cite: 41, 42]
+} 
         
         .status-board {
-            width: 100%; 
-            min-height: 160px; 
+            [cite_start]width: 100%; [cite: 42, 43]
+min-height: 160px; 
             padding: 25px 15px 15px 15px; 
             border-radius: 10px; 
             border: 2px solid #ff4500; 
             background: linear-gradient(135deg, #1a1a1a, #0d0d0d); 
-            color: #fff;
-            display: flex; 
+            [cite_start]color: #fff; [cite: 43, 44]
+display: flex; 
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin: 30px 0; 
-            box-shadow: inset 0 0 20px rgba(255,215,0,0.3);
+            [cite_start]margin: 30px 0; [cite: 44, 45]
+box-shadow: 
+                inset 0 0 20px rgba(255,215,0,0.3),
+                [cite_start]0 0 30px rgba(255,69,0,0.4); [cite: 45]
+[cite_start]position: relative; [cite: 46]
+            overflow: hidden;
+        }
+        .status-board::after {
+            [cite_start]content: ''; [cite: 46, 47]
+position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent 40%, rgba(255,215,0,0.1) 50%, transparent 60%);
+[cite_start][cite: 47]
+[cite_start]animation: statusGlow 4s linear infinite; [cite: 48]
+        }
+        @keyframes statusGlow {
+            [cite_start]0% { transform: rotate(0deg); [cite: 48, 49]
+}
+            [cite_start]100% { transform: rotate(360deg); [cite: 49, 50]
+}
         }
         .status-board h3 {
-            color: #ffd700;
-            font-size: 1.4em; 
+            [cite_start]color: #ffd700; [cite: 50, 51]
+font-size: 1.4em; 
             margin-bottom: 5px;
             text-shadow: 0 0 10px #ff8c00;
             font-family: 'Chakra Petch', sans-serif;
-        }
+            position: relative;
+            [cite_start]z-index: 1; [cite: 51, 52]
+}
         .status-board p {
-            font-size: 1.2em;
-            color: #fff;
+            [cite_start]font-size: 1.2em; [cite: 52, 53]
+color: #fff;
             margin: 5px 0;
             font-family: Arial, sans-serif;
-        }
+            position: relative;
+            [cite_start]z-index: 1; [cite: 53, 54]
+}
         .status-board .count {
-            font-family: 'Chakra Petch', monospace; 
-            font-size: 3em;
+            [cite_start]font-family: 'Chakra Petch', monospace; [cite: 54, 55]
+font-size: 3em;
             font-weight: 700; 
             color: #ff4500;
-            text-shadow: 0 0 15px #ffd700;
-        }
+            text-shadow: 0 0 15px #ffd700, 0 0 30px #ff4500;
+            position: relative;
+            [cite_start]z-index: 1; [cite: 55, 56]
+}
 
         .button-draw { 
-            background: linear-gradient(135deg, #ff4500, #ff8c00); 
-            color: white; border: none; padding: 25px 60px; 
+            [cite_start]background: linear-gradient(135deg, #ff4500, #ff8c00); [cite: 56, 57]
+color: white; border: none; padding: 25px 60px; 
             font-size: 1.8em; 
-            border-radius: 50px; cursor: pointer; 
-            box-shadow: 
+            [cite_start]border-radius: 50px; cursor: pointer; [cite: 57, 58]
+box-shadow: 
                 0 8px 20px rgba(255,69,0,0.6),
-                0 0 40px rgba(255,140,0,0.5);
-            font-weight: 700; 
+                [cite_start]0 0 40px rgba(255,140,0,0.5); [cite: 58, 59]
+font-weight: 700; 
             text-transform: uppercase; letter-spacing: 2px;
             position: relative;
             overflow: hidden;
-            animation: buttonPulse 2s ease-in-out infinite;
-        }
+            [cite_start]animation: buttonPulse 2s ease-in-out infinite; [cite: 59, 60]
+}
         @keyframes buttonPulse {
             0%, 100% { 
                 box-shadow: 
                     0 8px 20px rgba(255,69,0,0.6),
-                    0 0 40px rgba(255,140,0,0.5);
-                transform: translateY(0);
+                    [cite_start]0 0 40px rgba(255,140,0,0.5); [cite: 60, 61]
+transform: translateY(0);
             }
             50% { 
                 box-shadow: 
                     0 12px 30px rgba(255,69,0,0.9),
                     0 0 60px rgba(255,140,0,0.8),
-                    0 0 80px rgba(255,215,0,0.6);
+                    0 
+[cite_start][cite: 61, 62] 0 80px rgba(255,215,0,0.6);
                 transform: translateY(-2px);
             }
         }
         .button-draw::before {
-            content: '';
-            position: absolute;
+            [cite_start]content: ''; [cite: 62, 63]
+position: absolute;
             top: -50%; left: -50%;
             width: 200%; height: 200%;
             background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: buttonShine 3s linear infinite;
-        }
+            [cite_start]animation: buttonShine 3s linear infinite; [cite: 63, 64]
+}
         @keyframes buttonShine {
-            0% { transform: rotate(0deg) translateX(-100%); }
-            100% { transform: rotate(0deg) translateX(100%); }
+            [cite_start]0% { transform: rotate(0deg) translateX(-100%); [cite: 64, 65]
+}
+            [cite_start]100% { transform: rotate(0deg) translateX(100%); [cite: 65, 66]
+}
         }
         .button-draw:hover:not(:disabled) { 
-            transform: translateY(-5px) scale(1.08); 
-            animation: none;
+            [cite_start]transform: translateY(-5px) scale(1.08); [cite: 66, 67]
+animation: none;
             box-shadow: 
                 0 15px 40px rgba(255,69,0,1),
-                0 0 80px rgba(255,140,0,1);
-        }
-        .button-draw:disabled { background: #666; cursor: not-allowed; opacity: 0.6; }
+                [cite_start]0 0 80px rgba(255,140,0,1); [cite: 67, 68]
+}
+        [cite_start].button-draw:disabled { background: #666; cursor: not-allowed; opacity: 0.6; [cite: 68, 69]
+}
         .slot-frame {
-            width: 90%; 
-            max-width: 850px; 
+            [cite_start]width: 90%; [cite: 69, 70]
+max-width: 850px; 
             height: 240px;
             background: linear-gradient(135deg, #1a0033, #330066, #1a0033);
             border: 12px solid #ffd700; border-radius: 25px;
-            box-shadow: 0 0 60px rgba(255,215,0,0.8);
-            margin: 25px auto; display: flex;
+            [cite_start]box-shadow: 0 0 60px rgba(255,215,0,0.8); [cite: 70, 71]
+margin: 25px auto; display: flex;
             justify-content: center; align-items: center;
-            position: relative;
-        }
-        .slot-lever {
-            display: none !important;
-        }
+            [cite_start]position: relative; [cite: 71, 72]
+}
         .slot-container {
-            display: flex; justify-content: space-around; align-items: center;
+            [cite_start]display: flex; [cite: 72, 73]
+justify-content: space-around; align-items: center;
             border: 6px solid #cc0000; border-radius: 15px;
             background: linear-gradient(135deg, #000, #1a1a1a, #000);
-            overflow: hidden; width: 95%; height: 170px; 
+            [cite_start]overflow: hidden; width: 95%; [cite: 73]
+[cite_start]height: 170px; [cite: 74]
             box-shadow: inset 0 0 30px rgba(255,215,0,0.6);
-            position: relative;
-        }
+            [cite_start]position: relative; [cite: 74, 75]
+}
         .reel-wrapper {
-            flex-grow: 1;
-            width: 33.33%; 
+            [cite_start]flex-grow: 1; [cite: 75, 76]
+width: 33.33%; 
             max-width: 250px; 
             height: 100%; overflow: hidden;
             position: relative;
             background: linear-gradient(180deg, #000, #1a1a1a, #000);
-            border-right: 3px solid #444;
-        }
-        .reel-wrapper:last-child { border-right: none; }
+            [cite_start]border-right: 3px solid #444; [cite: 76, 77]
+}
+        [cite_start].reel-wrapper:last-child { border-right: none; [cite: 77, 78]
+}
         .reel {
-            width: 100%; display: flex; flex-direction: column;
+            [cite_start]width: 100%; [cite: 78, 79]
+display: flex; flex-direction: column;
             align-items: center; transition: transform 0s;
         }
         
         .reel-item {
-            height: 170px; text-align: center; 
+            [cite_start]height: 170px; [cite: 79, 80]
+text-align: center; 
             font-size: 1.0em; 
             font-weight: 700; 
             color: #fff;
             background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
             width: 100%; flex-shrink: 0;
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
+            [cite_start]display: flex; flex-direction: column; [cite: 80, 81]
+align-items: center; justify-content: center;
             border-bottom: 2px solid #2a2a2a; 
             padding: 5px 5px; 
-            line-height: 1.3; 
+            line-height: 1.3;
+            position: relative;
+            [cite_start]overflow: hidden; [cite: 81, 82]
+}
+        .reel-item::before {
+            [cite_start]content: ''; [cite: 82, 83]
+position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.1), transparent);
+            [cite_start]animation: itemShimmer 3s linear infinite; [cite: 83, 84]
+}
+        @keyframes itemShimmer {
+            [cite_start]0% { left: -100%; [cite: 84, 85]
+}
+            [cite_start]100% { left: 100%; [cite: 85, 86]
+}
         }
         .reel-item img {
-            width: 80px; height: 80px; border-radius: 50%;
+            [cite_start]width: 80px; [cite: 86, 87]
+height: 80px; border-radius: 50%;
             object-fit: cover; margin-bottom: 8px;
             border: 4px solid #ffd700;
-            box-shadow: 0 0 15px rgba(255,215,0,0.8);
-        }
+            [cite_start]box-shadow: 0 0 15px rgba(255,215,0,0.8); [cite: 87, 88]
+}
         .slot-symbol {
-            font-size: 3.5em; 
-            margin-bottom: 5px;
+            [cite_start]font-size: 3.5em; [cite: 88, 89]
+margin-bottom: 5px;
             filter: drop-shadow(0 0 10px rgba(255,215,0,0.8));
+            [cite_start]animation: symbolFloat 2s ease-in-out infinite; [cite: 89, 90]
+}
+        @keyframes symbolFloat {
+            [cite_start]0%, 100% { transform: translateY(0) scale(1); [cite: 90, 91]
+}
+            [cite_start]50% { transform: translateY(-5px) scale(1.05); [cite: 91, 92]
+}
         }
         .reel-item span {
-            font-size: 0.9em; 
-            text-shadow: 0 0 10px rgba(255,215,0,0.8);
+            [cite_start]font-size: 0.9em; [cite: 92, 93]
+text-shadow: 0 0 10px rgba(255,215,0,0.8);
             color: #ffd700; 
             font-weight: 700;
             word-wrap: break-word; 
-            max-width: 95%; 
-        }
+            [cite_start]max-width: 95%; [cite: 93, 94]
+}
         
         #result {
-            margin: 30px 0 20px; padding: 25px;
+            [cite_start]margin: 30px 0 20px; [cite: 94, 95]
+padding: 25px;
             border: 4px solid #ff4500; border-radius: 15px;
             min-height: 60px; display: flex;
             align-items: center; justify-content: center;
             font-size: 2.2em; 
-            font-weight: 700; 
-            color: #ffd700;
+            [cite_start]font-weight: 700; [cite: 95, 96]
+color: #ffd700;
             background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
             text-shadow: 0 0 20px rgba(255,215,0,0.9);
-            font-family: 'Chakra Petch', sans-serif;
-        }
-        .winner-display { animation: winnerGlow 1s infinite alternate; }
+            [cite_start]font-family: 'Chakra Petch', sans-serif; [cite: 96, 97]
+}
+        [cite_start].winner-display { animation: winnerGlow 1s infinite alternate; [cite: 97, 98]
+}
         @keyframes winnerGlow {
-            from { box-shadow: 0 0 40px rgba(255,215,0,0.8); }
-            to { box-shadow: 0 0 60px #ffd700; }
+            [cite_start]from { box-shadow: 0 0 40px rgba(255,215,0,0.8); [cite: 98, 99]
+}
+            [cite_start]to { box-shadow: 0 0 60px #ffd700; [cite: 99, 100]
+}
         }
         #jackpotOverlay { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            [cite_start]position: fixed; [cite: 100, 101]
+top: 0; left: 0; width: 100%; height: 100%; 
             display: none; flex-direction: column;
             justify-content: center; align-items: center; 
-            background: rgba(0,0,0,0.9); z-index: 2000; 
-            opacity: 0; transition: opacity 0.5s;
+            [cite_start]background: rgba(0,0,0,0.9); z-index: 2000; [cite: 101, 102]
+opacity: 0; transition: opacity 0.5s;
         }
         .jackpot-text { 
-            font-size: 7em; font-weight: 900; 
+            [cite_start]font-size: 7em; [cite: 102, 103]
+font-weight: 900; 
             color: #ffd700;
             text-shadow: 0 0 40px #ff4500;
-            margin-bottom: 30px;
-        }
+            [cite_start]margin-bottom: 30px; [cite: 103, 104]
+}
         #winnerAnnouncement {
-            font-size: 3.5em; 
-            color: #fff; 
+            [cite_start]font-size: 3.5em; [cite: 104, 105]
+color: #fff; 
             font-weight: 900;
             text-shadow: 0 0 30px #00FFFF, 0 0 50px #ffd700;
             padding: 30px 50px;
-            background: linear-gradient(135deg, rgba(255,215,0,0.3), rgba(255,69,0,0.4));
-            border-radius: 20px; 
+            [cite_start]background: linear-gradient(135deg, rgba(255,215,0,0.3), rgba(255,69,0,0.4)); [cite: 105, 106]
+border-radius: 20px; 
             display: flex;
             align-items: center; 
             border: 5px solid #ffd700;
-            box-shadow: 0 0 60px rgba(255,215,0,1), inset 0 0 40px rgba(255,69,0,0.5);
-            animation: winnerBounce 0.5s ease infinite;
-        }
+            [cite_start]box-shadow: 0 0 60px rgba(255,215,0,1), inset 0 0 40px rgba(255,69,0,0.5); [cite: 106, 107]
+[cite_start]animation: winnerBounce 0.5s ease infinite; [cite: 107]
+}
         @keyframes winnerBounce {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            [cite_start]0%, 100% { transform: scale(1); [cite: 108]
+}
+            [cite_start]50% { transform: scale(1.1); [cite: 109]
+}
         }
         #winnerAnnouncement img {
-            width: 100px; height: 100px; border-radius: 50%;
+            [cite_start]width: 100px; [cite: 109, 110]
+height: 100px; border-radius: 50%;
             margin-right: 20px; border: 5px solid #ffd700;
-            box-shadow: 0 0 30px rgba(255,215,0,0.9);
-        }
+            [cite_start]box-shadow: 0 0 30px rgba(255,215,0,0.9); [cite: 110, 111]
+}
         .winner-symbol {
-            font-size: 5em;
-            margin-right: 20px;
+            [cite_start]font-size: 5em; [cite: 111, 112]
+margin-right: 20px;
             filter: drop-shadow(0 0 30px rgba(255,215,0,1));
-            animation: symbolSpin 2s linear infinite;
-        }
+            [cite_start]animation: symbolSpin 2s linear infinite; [cite: 112, 113]
+}
         @keyframes symbolSpin {
-            from { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.2); }
-            to { transform: rotate(360deg) scale(1); }
+            [cite_start]from { transform: rotate(0deg) scale(1); [cite: 113, 114]
+}
+            [cite_start]50% { transform: rotate(180deg) scale(1.2); [cite: 114, 115]
+}
+            [cite_start]to { transform: rotate(360deg) scale(1); [cite: 115, 116]
+}
         }
         .confetti-piece {
-            position: absolute; 
-            animation: confettiFall 3s linear forwards;
+            [cite_start]position: absolute; [cite: 116, 117]
+animation: confettiFall 3s linear forwards;
             border-radius: 50%;
         }
         @keyframes confettiFall {
             0% { 
-                transform: translateY(0) rotate(0deg); 
-                opacity: 1; 
+                [cite_start]transform: translateY(0) rotate(0deg); [cite: 118]
+opacity: 1; 
             }
             100% { 
-                transform: translateY(100vh) translateX(calc(-50vw + 100vw * var(--random))) rotate(1080deg); 
-                opacity: 0; 
+                [cite_start]transform: translateY(100vh) translateX(calc(-50vw + 100vw * var(--random))) rotate(1080deg); [cite: 119]
+opacity: 0; 
             }
         }
         .confirm-popup { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            [cite_start]position: fixed; [cite: 119, 120]
+top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0,0,0,0.9); display: none; 
-            justify-content: center; align-items: center; z-index: 1000;
-        }
+            [cite_start]justify-content: center; align-items: center; z-index: 1000; [cite: 120, 121]
+}
         .popup-content { 
-            background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
-            padding: 40px; border-radius: 20px; text-align: center; 
+            [cite_start]background: linear-gradient(135deg, #1a1a1a, #0d0d0d); [cite: 121, 122]
+padding: 40px; border-radius: 20px; text-align: center; 
             box-shadow: 0 0 50px rgba(255,215,0,0.8);
-            width: 400px; border: 4px solid #ffd700;
-        }
-        .popup-content p { font-size: 1.3em; margin-bottom: 30px; color: #fff; }
+            [cite_start]width: 400px; border: 4px solid #ffd700; [cite: 122, 123]
+}
+        [cite_start].popup-content p { font-size: 1.3em; margin-bottom: 30px; color: #fff; [cite: 123, 124]
+}
         .popup-buttons button { 
-            padding: 15px 30px; margin: 0 15px; border: none; 
+            [cite_start]padding: 15px 30px; [cite: 124, 125]
+margin: 0 15px; border: none; 
             border-radius: 50px; font-weight: 700; cursor: pointer; 
-            font-size: 1.1em; text-transform: uppercase;
-        }
-        .popup-buttons button:hover { transform: translateY(-2px); }
-        #confirmRemove { background: linear-gradient(135deg, #cc0000, #ff0000); color: white; }
-        #cancelRemove { background: linear-gradient(135deg, #2e8b57, #3cb371); color: white; }
+            [cite_start]font-size: 1.1em; text-transform: uppercase; [cite: 125, 126]
+}
+        [cite_start].popup-buttons button:hover { transform: translateY(-2px); [cite: 126, 127]
+}
+        [cite_start]#confirmRemove { background: linear-gradient(135deg, #cc0000, #ff0000); color: white; [cite: 127, 128]
+}
+        [cite_start]#cancelRemove { background: linear-gradient(135deg, #2e8b57, #3cb371); color: white; [cite: 128, 129]
+}
     </style>
 </head>
 <body>
-    <audio id="spinSound" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3" preload="auto" volume="0.5"></audio>
-    <audio id="celebrationSound" src="https://pub-841961e57c664b3896504a50b7310034.r2.dev/long_celebration.mp3" preload="auto"></audio>
-
     <div class="container">
         <h1>ServiceDesk 888</h1>
         <h2>🔥 Lucky Slot Machine 🔥</h2>
         <div class="input-area">
             <label for="items">Total 52 Lucky Draw Items</label>
-            <textarea id="items">
-Prize #1
+            <textarea id="items">Prize #1
 Prize #2
 Prize #3
 Prize #4
@@ -452,7 +539,8 @@ Prize #27
 Prize #28
 Prize #29
 Prize #30
-Prize #31
+Prize 
+[cite_start][cite: 130] #31
 Prize #32
 Prize #33
 Prize #34
@@ -478,8 +566,10 @@ Prize #52</textarea>
             <div class="status-board">
                 <h3>Lucky Draw Status</h3>
                 <p>Initial Prizes: <span class="count">52</span> Items</p>
-                <p>Remaining: <span id="itemsRemainingCount" class="count">52</span> Items</p>
-                <p>Next Draw: <span id="nextRewardDisplay" style="color: #00FFFF; font-weight: bold;">Employee No 1</span></p>
+                
+[cite_start][cite: 131] <p>Remaining: <span id="itemsRemainingCount" class="count">52</span> Items</p>
+                [cite_start]<p>Next Draw: <span id="nextRewardDisplay" style="color: #00FFFF; [cite: 132]
+font-weight: bold;">Employee No 1</span></p>
             </div>
             
         </div>
@@ -487,9 +577,9 @@ Prize #52</textarea>
             <div class="slot-container">
                 <div class="reel-wrapper"><div class="reel" id="reel1"></div></div>
                 <div class="reel-wrapper"><div class="reel" id="reel2"></div></div>
-                <div class="reel-wrapper"><div the reel" id="reel3"></div></div>
+     
+[cite_start][cite: 133]            <div class="reel-wrapper"><div class="reel" id="reel3"></div></div>
             </div>
-            <div class="slot-lever"></div>
         </div>
         <button class="button-draw" id="drawButton" onclick="startDraw()">🎰 SPIN 🎰</button>
         <div id="result">Press SPIN!</div>
@@ -499,7 +589,8 @@ Prize #52</textarea>
         <div id="winnerAnnouncement"></div>
     </div>
     <div id="confirmPopup" class="confirm-popup">
-        <div class="popup-content">
+      
+[cite_start][cite: 134]   <div class="popup-content">
             <p>Remove Prize "<span id="winnerNameDisplay" style="color:#ffd700;"></span>" from list?</p>
             <div class="popup-buttons">
                 <button id="confirmRemove" onclick="handleConfirmation(true)">REMOVE</button>
@@ -508,256 +599,331 @@ Prize #52</textarea>
         </div>
     </div>
     <script>
-        let currentWinner = { name: '', symbol: '' };
-        let allItems = [];
-        const reelHeight = 170;
+  
+[cite_start][cite: 135]       let currentWinner = { name: '', symbol: '' };
+        [cite_start]let allItems = []; [cite: 136]
+const reelHeight = 170;
         const SPIN_DURATION_MS = 6000;
         const REELS = ['reel1', 'reel2', 'reel3'];
-        let drawButton = document.getElementById('drawButton');
+        [cite_start]let drawButton = document.getElementById('drawButton'); [cite: 137]
+let isAudioUnlocked = false;
 
-        // --- Audio Controls (Standard <audio> tags) ---
-        const spinSound = document.getElementById('spinSound');
-        const celebrationSound = document.getElementById('celebrationSound');
-
-        // Global AudioContext for unlocking
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        // Web Audio API System
+        [cite_start]const AudioContext = window.AudioContext || [cite: 137, 138]
+window.webkitAudioContext;
         let audioContext = null;
-        
-        function initializeAudioContext() {
-            // สร้าง AudioContext เมื่อมี User Gesture ครั้งแรก
+        let spinOscillator = null;
+
+        function initAudioContext() {
             if (!audioContext) {
-                audioContext = new AudioContext();
-            }
-        }
-        
-        // ฟังก์ชันปลดล็อก Audio Context
-        async function unlockAudioContext() {
-            initializeAudioContext();
-            if (audioContext.state === 'suspended') {
-                try {
-                    await audioContext.resume();
-                    console.log("AudioContext resumed, all sounds unlocked.");
-                } catch (e) {
-                    console.error("Failed to resume AudioContext:", e);
-                }
+                [cite_start]audioContext = new AudioContext(); [cite: 139]
+console.log("✅ AudioContext created");
             }
         }
 
-        function startSpinSound() {
-            spinSound.currentTime = 0;
-            // ต้องใช้ play() ตรงนี้ เพราะเบราว์เซอร์อนุญาตให้เล่นเสียงหมุนภายใต้ User Gesture โดยตรง
-            spinSound.play().catch(error => console.error("Failed to play spin sound:", error));
+        async function unlockAudio() {
+            [cite_start]initAudioContext(); [cite: 140]
+if (audioContext && audioContext.state === 'suspended') {
+                try {
+                    [cite_start]await audioContext.resume(); [cite: 140, 141]
+isAudioUnlocked = true;
+                    console.log("🔓 Audio unlocked!");
+                } catch (e) {
+                    [cite_start]console.error("❌ Failed to unlock audio:", e); [cite: 142]
+}
+            } else {
+                [cite_start]isAudioUnlocked = true; [cite: 143]
+}
+        }
+
+        function playSpinSound() {
+            [cite_start]if (!audioContext || !isAudioUnlocked) return; [cite: 144]
+[cite_start]stopSpinSound(); [cite: 144]
+            
+            spinOscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            [cite_start]spinOscillator.type = 'sawtooth'; [cite: 144]
+            [cite_start]spinOscillator.frequency.setValueAtTime(200, audioContext.currentTime); [cite: 144]
+            [cite_start]spinOscillator.frequency.exponentialRampToValueAtTime(400, audioContext.currentTime + 0.5); [cite: 144]
+            
+            [cite_start]gainNode.gain.setValueAtTime(0.15, audioContext.currentTime); [cite: 145]
+            [cite_start]gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 6); [cite: 145]
+            
+            spinOscillator.connect(gainNode);
+            [cite_start]gainNode.connect(audioContext.destination); [cite: 145, 153]
+            
+            [cite_start]spinOscillator.start(); [cite: 145]
+            [cite_start]console.log("🎵 Spin sound playing"); [cite: 146]
         }
 
         function stopSpinSound() {
-            spinSound.pause();
-            spinSound.currentTime = 0; 
+            if (spinOscillator) {
+                try {
+                    [cite_start]spinOscillator.stop(); [cite: 147]
+                    [cite_start]spinOscillator.disconnect(); [cite: 147]
+                } catch (e) {}
+                [cite_start]spinOscillator = null; [cite: 148]
+            }
         }
 
+        // ************************************************
+        // ******* MODIFIED CELEBRATION SOUND *************
+        // ************************************************
         function playCelebrationSound() {
-            // เมื่อ AudioContext ถูกปลดล็อกแล้ว (ใน startDraw) การสั่ง play() ตรงนี้ควรจะทำงาน
-            celebrationSound.currentTime = 0;
-            celebrationSound.play().catch(error => console.error("Failed to play celebration sound:", error));
-            console.log("Celebration sound activated.");
-        }
-        
-        function stopCelebrationSounds() {
-            celebrationSound.pause();
-            celebrationSound.currentTime = 0;
-            console.log("Celebration sound stopped.");
-        }
-        // ------------------------------------------
+            if (!audioContext || !isAudioUnlocked) {
+                console.log("⚠️ Audio not ready");
+                return;
+            }
+            
+            console.log("🎉 Playing Fanfare celebration!");
+            
+            // Fanfare Melody: C5, G5, C6, G6 (แบบแตร)
+            const notes = [523.25, 783.99, 1046.50, 1567.98]; // C5, G5, C6, G6
+            const duration = 0.2;
+            const contextTime = audioContext.currentTime;
 
-        const slotSymbols = ['🍒', '🍋', '🍊', '🍉', '🍇', '⭐', '💎', '7️⃣', '🔔', '💰', '👑', '🍀', '🚀', '🎁', '🏆'];
+            notes.forEach((freq, index) => {
+                setTimeout(() => {
+                    const osc = audioContext.createOscillator();
+                    const gain = audioContext.createGain();
+                    
+                    // ใช้ Square wave เพื่อจำลองเสียงแตร
+                    osc.type = 'square'; 
+                    osc.frequency.setValueAtTime(freq, contextTime);
+                    
+                    gain.gain.setValueAtTime(0.4, contextTime); // เพิ่มความดังเล็กน้อย
+                    // Attack/Decay Envelope
+                    gain.gain.linearRampToValueAtTime(0.4, contextTime + 0.01);
+                    gain.gain.exponentialRampToValueAtTime(0.001, contextTime + duration);
+                    
+                    osc.connect(gain);
+                    gain.connect(audioContext.destination);
+                    
+                    osc.start();
+                    osc.stop(contextTime + duration);
+                }, index * 200); // เล่นโน้ตแต่ละตัวห่างกัน 200ms
+            });
 
+            // Cymbal Swell (เสียงฉาบดังขึ้นเรื่อยๆ)
+            setTimeout(() => {
+                const bufferSize = audioContext.sampleRate * 1.5; // ยาวขึ้น 1.5 วินาที
+                const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+                const data = buffer.getChannelData(0);
+                
+                // สร้าง Noise (เหมือนเดิม)
+                for (let i = 0; i < bufferSize; i++) {
+                    // ลด Decay เล็กน้อยเพื่อคงเสียงไว้
+                    data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufferSize * 0.5)); 
+                }
+                
+                const noise = audioContext.createBufferSource();
+                const noiseGain = audioContext.createGain();
+                const filter = audioContext.createBiquadFilter();
+                
+                noise.buffer = buffer;
+                filter.type = 'bandpass'; // ใช้ Bandpass ให้เสียงมีความถี่เฉพาะเจาะจง
+                filter.frequency.setValueAtTime(4000, contextTime);
+                filter.Q.setValueAtTime(0.5, contextTime);
+
+                // Ramp up Gain (Swell effect)
+                noiseGain.gain.setValueAtTime(0.01, contextTime);
+                noiseGain.gain.linearRampToValueAtTime(0.6, contextTime + 0.5); // ดังขึ้นใน 0.5 วิ
+                noiseGain.gain.exponentialRampToValueAtTime(0.001, contextTime + 1.5); // ค่อยๆ หายไป
+                
+                noise.connect(filter);
+                filter.connect(noiseGain);
+                noiseGain.connect(audioContext.destination);
+                
+                noise.start();
+                noise.stop(contextTime + 1.5);
+            }, 800); // เริ่มเล่นหลัง Fanfare เริ่มได้ 800ms
+        }
+        // ************************************************
+        // ******* END MODIFIED CELEBRATION SOUND *********
+        // ************************************************
+
+        [cite_start]const slotSymbols = ['🍒', '🍋', '🍊', '🍉', '🍇', '⭐', '💎', '7️⃣', '🔔', '💰', '👑', '🍀', '🚀', '🎁', '🏆']; [cite: 159]
         document.addEventListener('DOMContentLoaded', initialize);
 
         function initialize() {
-            // ใน initialize ไม่ต้องทำอะไรกับเสียงมาก เพราะจะถูกจัดการเมื่อมีการคลิกปุ่ม
             updateReels();
-            document.getElementById('reel3').addEventListener('transitionend', handleSpinEnd);
+            [cite_start]document.getElementById('reel3').addEventListener('transitionend', handleSpinEnd); [cite: 160]
+[cite_start]document.body.addEventListener('click', unlockAudio, { once: true }); [cite: 160]
         }
 
         function updateStatusBoard(currentList) {
-            const count = currentList.length;
-            const initialCount = 52;
+            [cite_start]const count = currentList.length; [cite: 161]
+[cite_start]const initialCount = 52; [cite: 161]
             const nextRewardNumber = initialCount - count + 1;
             
-            document.getElementById('itemsRemainingCount').textContent = count;
-            
-            document.getElementById('nextRewardDisplay').textContent = 
-                count > 0 ? `Employee No ${nextRewardNumber}` : 'All Gone!';
+            [cite_start]document.getElementById('itemsRemainingCount').textContent = count; [cite: 162]
+document.getElementById('nextRewardDisplay').textContent = 
+                [cite_start]count > 0 ? [cite: 162, 163]
+[cite_start]`Employee No ${nextRewardNumber}` : 'All Gone!'; [cite: 163]
             
             if (count === 0) {
-                document.getElementById('result').textContent = 'Draw Ended!';
-                drawButton.disabled = true;
+                [cite_start]document.getElementById('result').textContent = 'Draw Ended!'; [cite: 164]
+[cite_start]drawButton.disabled = true; [cite: 164]
             }
         }
 
         function updateReels() {
-            const textarea = document.getElementById('items');
-            const rawNames = textarea.value.split('\n').map(i => i.trim()).filter(i => i.length > 0);
-            
-            allItems = rawNames.map((name, idx) => ({
+            [cite_start]const textarea = document.getElementById('items'); [cite: 165]
+[cite_start]const rawNames = textarea.value.split('\n').map(i => i.trim()).filter(i => i.length > 0); [cite: 165]
+[cite_start][cite: 166] allItems = rawNames.map((name, idx) => ({
                 name: name,
                 symbol: slotSymbols[idx % slotSymbols.length]
-            }));
-            
-            REELS.forEach(id => {
+            [cite_start]})); [cite: 166]
+[cite_start][cite: 167] REELS.forEach(id => {
                 const reel = document.getElementById(id);
                 reel.innerHTML = '';
                 reel.style.transition = 'none'; 
                 reel.style.transform = 'translateY(0)';
                 
-                if (allItems.length > 0) {
+        
+[cite_start][cite: 168]         if (allItems.length > 0) {
                     const repeated = Array(5).fill(allItems).flat(); 
                     repeated.forEach(item => {
                         const div = document.createElement('div');
-                        div.className = 'reel-item';
+               
+[cite_start][cite: 169]          div.className = 'reel-item';
                         const symbolDiv = document.createElement('div');
                         symbolDiv.className = 'slot-symbol';
                         symbolDiv.textContent = item.symbol;
-                        div.appendChild(symbolDiv);
+          
+[cite_start][cite: 170]               div.appendChild(symbolDiv);
                         const span = document.createElement('span');
                         span.textContent = item.name;
                         div.appendChild(span);
-                        reel.appendChild(div);
+         
+[cite_start][cite: 171]                reel.appendChild(div);
                     });
-                } else {
-                    const div = document.createElement('div');
-                    div.className = 'reel-item';
+[cite_start][cite: 172] } else {
+                    [cite_start]const div = document.createElement('div'); [cite: 173]
+div.className = 'reel-item';
                     div.textContent = 'NO ITEMS';
                     reel.appendChild(div);
                 }
             });
-            document.getElementById('result').classList.remove('winner-display');
-            
+[cite_start][cite: 174] document.getElementById('result').classList.remove('winner-display');
             updateStatusBoard(rawNames);
         }
 
         function handleSpinEnd(e) {
-            if (e.propertyName !== 'transform' || e.target.id !== 'reel3') return;
+            [cite_start]if (e.propertyName !== 'transform' || e.target.id !== 'reel3') return; [cite: 175]
+[cite_start]stopSpinSound(); [cite: 175]
             
-            stopSpinSound(); 
-            playCelebrationSound(); // เล่นเสียงทันทีที่หมุนเสร็จ
-
-            const resultDiv = document.getElementById('result');
+            setTimeout(() => {
+                playCelebrationSound();
+            [cite_start]}, 100); [cite: 176]
+const resultDiv = document.getElementById('result');
             resultDiv.textContent = currentWinner.name + ' 🥳';
-            resultDiv.classList.add('winner-display');
-            
-            document.getElementById('winnerAnnouncement').innerHTML = `
+            [cite_start]resultDiv.classList.add('winner-display'); [cite: 177]
+document.getElementById('winnerAnnouncement').innerHTML = `
                 <div class="winner-symbol">${currentWinner.symbol}</div>
                 <span>🎉 ${currentWinner.name} 🎉</span>
-            `;
-            
-            drawButton.disabled = false;
+            [cite_start]`; [cite: 177]
+[cite_start][cite: 178] drawButton.disabled = false;
             triggerJackpotAnimation();
             
-            // รอ 3.5 วินาทีแล้วแสดง Popup
             setTimeout(() => {
                  showConfirmationPopup(); 
-            }, 3500); 
-        }
+            [cite_start]}, 3500); [cite: 179]
+}
         
         async function startDraw() {
-            // 1. ปลดล็อก AudioContext ด้วย User Gesture 
-            await unlockAudioContext(); 
-            
-            updateReels(); 
+            [cite_start]await unlockAudio(); [cite: 180]
+[cite_start]updateReels(); [cite: 180]
             const resultDiv = document.getElementById('result');
             
             if (allItems.length === 0) {
-                resultDiv.textContent = 'Prizes are finished!';
-                resultDiv.classList.remove('winner-display');
+                [cite_start]resultDiv.textContent = 'Prizes are finished!'; [cite: 181]
+[cite_start]resultDiv.classList.remove('winner-display'); [cite: 181]
                 drawButton.disabled = true;
                 return;
             }
             
-            drawButton.disabled = true;
-            resultDiv.classList.remove('winner-display');
+            [cite_start]drawButton.disabled = true; [cite: 182]
+[cite_start]resultDiv.classList.remove('winner-display'); [cite: 182]
             resultDiv.textContent = 'ROLLING...';
 
-            // 2. เริ่มเล่นเสียงหมุนเมื่อคลิก
-            startSpinSound();
+            playSpinSound();
 
             const winnerIndex = Math.floor(Math.random() * allItems.length);
             currentWinner = allItems[winnerIndex];
             
-            const itemCount = allItems.length;
-            
-            const repeatCycle = 4; 
+            [cite_start]const itemCount = allItems.length; [cite: 183]
+const repeatCycle = 4; 
             const stopIndex = (repeatCycle * itemCount) + winnerIndex; 
-            const finalTranslateY = stopIndex * reelHeight;
-            
-            REELS.forEach((id, index) => {
+            [cite_start]const finalTranslateY = stopIndex * reelHeight; [cite: 183, 184]
+REELS.forEach((id, index) => {
                 const reel = document.getElementById(id);
                 
-                // Reset Transition
                 reel.style.transition = 'none';
                 reel.style.transform = 'translateY(0)';
                 
-                // Start Spin Animation after a tiny delay
-                setTimeout(() => {
+          
+[cite_start][cite: 185]       setTimeout(() => {
                     const duration = SPIN_DURATION_MS + (index * 500); 
                     reel.style.transition = `transform ${duration / 1000}s cubic-bezier(0.1, 0.7, 0.4, 1)`;
                     reel.style.transform = `translateY(-${finalTranslateY}px)`;
-                }, 10 + (index * 50));
+             
+[cite_start][cite: 186]    }, 10 + (index * 50));
             });
-        }
+[cite_start][cite: 187] }
 
         function triggerJackpotAnimation() {
-            const overlay = document.getElementById('jackpotOverlay');
-            overlay.style.display = 'flex';
-            setTimeout(() => { overlay.style.opacity = '1'; }, 50);
-            
-            // Confetti Generation
-            for (let i = 0; i < 150; i++) {
-                const c = document.createElement('div');
-                c.className = 'confetti-piece';
+            [cite_start]const overlay = document.getElementById('jackpotOverlay'); [cite: 187, 188]
+overlay.style.display = 'flex';
+            [cite_start]setTimeout(() => { overlay.style.opacity = '1'; }, 50); [cite: 188, 189]
+[cite_start][cite: 189] for (let i = 0; i < 150; i++) {
+                [cite_start]const c = document.createElement('div'); [cite: 190]
+[cite_start]c.className = 'confetti-piece'; [cite: 190]
                 c.style.left = Math.random() * 100 + 'vw';
-                c.style.top = -20 + 'px';
-                c.style.width = (5 + Math.random() * 15) + 'px';
-                c.style.height = (5 + Math.random() * 15) + 'px';
-                c.style.backgroundColor = ['#ffd700', '#ff4500', '#fff', '#00FFFF', '#ff1493', '#7fff00', '#ff8c00'][Math.floor(Math.random() * 7)];
-                c.style.animationDelay = (Math.random() * 0.5) + 's';
-                c.style.animationDuration = (2 + Math.random() * 2) + 's';
+                [cite_start]c.style.top = -20 + 'px'; [cite: 190, 191]
+[cite_start]c.style.width = (5 + Math.random() * 15) + 'px'; [cite: 191]
+                [cite_start]c.style.height = (5 + Math.random() * 15) + 'px'; [cite: 192]
+[cite_start]c.style.backgroundColor = ['#ffd700', '#ff4500', '#fff', '#00FFFF', '#ff1493', '#7fff00', '#ff8c00'][Math.floor(Math.random() * 7)]; [cite: 192]
+                [cite_start]c.style.animationDelay = (Math.random() * 0.5) + 's'; [cite: 192, 193]
+[cite_start]c.style.animationDuration = (2 + Math.random() * 2) + 's'; [cite: 193]
                 c.style.setProperty('--random', Math.random());
-                overlay.appendChild(c);
-            }
+                [cite_start]overlay.appendChild(c); [cite: 193, 194]
+}
 
             setTimeout(() => {
                 overlay.style.opacity = '0';
                 setTimeout(() => {
                     overlay.style.display = 'none';
                     overlay.querySelectorAll('.confetti-piece').forEach(c => c.remove());
-                }, 500);
-            }, 3500);
-        }
+      
+[cite_start][cite: 195]           }, 500);
+            [cite_start]}, 3500); [cite: 196]
+}
 
         function showConfirmationPopup() {
-            document.getElementById('winnerNameDisplay').textContent = currentWinner.name;
-            document.getElementById('confirmPopup').style.display = 'flex';
+            [cite_start]document.getElementById('winnerNameDisplay').textContent = currentWinner.name; [cite: 197]
+[cite_start]document.getElementById('confirmPopup').style.display = 'flex'; [cite: 197]
         }
 
         function handleConfirmation(shouldRemove) {
-            document.getElementById('confirmPopup').style.display = 'none';
-            stopCelebrationSounds(); // หยุดเสียงเฉลิมฉลองเมื่อเลือกดำเนินการแล้ว
-            drawButton.disabled = false;
+            [cite_start]document.getElementById('confirmPopup').style.display = 'none'; [cite: 198]
+[cite_start]drawButton.disabled = false; [cite: 198]
             
             if (shouldRemove) {
-                const textarea = document.getElementById('items');
-                const currentNames = textarea.value.split('\n').map(i => i.trim()).filter(i => i.length > 0);
+                [cite_start]const textarea = document.getElementById('items'); [cite: 199]
+[cite_start]const currentNames = textarea.value.split('\n').map(i => i.trim()).filter(i => i.length > 0); [cite: 199]
                 const updated = currentNames.filter(n => n !== currentWinner.name);
-                textarea.value = updated.join('\n');
+[cite_start][cite: 200] textarea.value = updated.join('\n');
                 currentWinner = { name: '', symbol: '' };
-                document.getElementById('result').textContent = 'Prize ReMoved! Waiting for Next Spin...';
-            } else {
-                currentWinner = { name: '', symbol: '' };
-                document.getElementById('result').textContent = 'Name kept! Spin again...';
+                document.getElementById('result').textContent = 'Prize Removed! [cite_start]Waiting for Next Spin...'; [cite: 200, 201]
+} else {
+                [cite_start]currentWinner = { name: '', symbol: '' }; [cite: 202]
+document.getElementById('result').textContent = 'Prize kept! [cite_start]Spin again...'; [cite: 202]
             }
             document.getElementById('result').classList.remove('winner-display');
-            updateReels(); 
-        }
+            [cite_start]updateReels(); [cite: 203]
+}
     </script>
 </body>
 </html>
