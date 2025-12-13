@@ -6,76 +6,74 @@
     <title>🎰 ServiceDesk 888 - Premium Edition</title>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        * [cite_start]{ margin: 0; [cite: 1]
-padding: 0; box-sizing: border-box; [cite_start]} [cite: 2]
+        * { margin: 0;
+padding: 0; box-sizing: border-box; }
         
         body {
-            [cite_start]font-family: 'Chakra Petch', 'Segoe UI', sans-serif; [cite: 2]
-[cite_start]display: flex; [cite: 3]
+            font-family: 'Chakra Petch', 'Segoe UI', sans-serif;
+display: flex;
             align-items: center;
             justify-content: center;
             min-height: 95vh; 
-            [cite_start]width: 100vw; [cite: 3]
-[cite_start]background: radial-gradient(circle at 20% 30%, #1a0a0a 0%, #000 50%), radial-gradient(circle at 80% 70%, #0a0a1a 0%, #000 50%); [cite: 4]
-            [cite_start]color: #e0e0e0; [cite: 4]
-[cite_start]position: relative; [cite: 5]
+            width: 100vw;
+background: radial-gradient(circle at 20% 30%, #1a0a0a 0%, #000 50%), radial-gradient(circle at 80% 70%, #0a0a1a 0%, #000 50%);
+            color: #e0e0e0;
+position: relative;
             overflow-x: hidden; 
         }
         body::before {
             content: '';
-[cite_start][cite: 5]
-[cite_start]position: fixed; [cite: 6]
+position: fixed;
             top: 0; left: 0;
-            [cite_start]width: 100%; height: 100%; [cite: 6]
+            width: 100%; height: 100%;
 background: 
                 radial-gradient(circle at 20% 50%, rgba(255,215,0,0.15), transparent 40%),
                 radial-gradient(circle at 80% 50%, rgba(255,69,0,0.15), transparent 40%),
-                [cite_start]radial-gradient(circle at 50% 20%, rgba(255,140,0,0.1), transparent 40%); [cite: 7]
-[cite_start]animation: bgPulse 3s ease-in-out infinite; [cite: 8]
+                radial-gradient(circle at 50% 20%, rgba(255,140,0,0.1), transparent 40%);
+animation: bgPulse 3s ease-in-out infinite;
             pointer-events: none;
         }
         @keyframes bgPulse {
-            [cite_start]0%, 100% { opacity: 0.3; [cite: 8]
-transform: scale(1); [cite_start]} [cite: 9]
-            [cite_start]50% { opacity: 0.8; transform: scale(1.1); [cite: 9, 10]
+            0%, 100% { opacity: 0.3;
+transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1);
 }
         }
         body::after {
             content: '';
-[cite_start][cite: 10]
-[cite_start]position: fixed; [cite: 11]
+position: fixed;
             top: -50%; left: -50%;
-            [cite_start]width: 200%; height: 200%; [cite: 11]
+            width: 200%; height: 200%;
 background: repeating-linear-gradient(
                 0deg,
                 transparent,
                 transparent 2px,
                 rgba(255,215,0,0.03) 2px,
                 rgba(255,215,0,0.03) 4px
-            [cite_start]); [cite: 12]
-[cite_start]animation: scanlines 8s linear infinite; [cite: 13]
+            );
+animation: scanlines 8s linear infinite;
             pointer-events: none;
         }
         @keyframes scanlines {
-            [cite_start]0% { transform: translateY(0); [cite: 13, 14]
+            0% { transform: translateY(0);
 }
-            [cite_start]100% { transform: translateY(50px); [cite: 14, 15]
+            100% { transform: translateY(50px);
 }
         }
         .container {
-            [cite_start]background: linear-gradient(135deg, rgba(30,30,30,0.95), rgba(15,15,15,0.98)); [cite: 15, 16]
-[cite_start]padding: 30px 60px; [cite: 16]
+            background: linear-gradient(135deg, rgba(30,30,30,0.95), rgba(15,15,15,0.98));
+padding: 30px 60px;
             border-radius: 20px;
             box-shadow: 
                 0 0 80px rgba(255,215,0,0.6),
                 0 0 120px rgba(255,69,0,0.4),
                 inset 0 0 60px rgba(0,0,0,0.8);
-            [cite_start]text-align: center; [cite: 17]
+text-align: center;
             max-width: 950px; 
             width: 90vw;
             border: 4px solid #ffd700;
             position: relative;
-            [cite_start]animation: containerGlow 2s ease-in-out infinite; [cite: 17, 18]
+            animation: containerGlow 2s ease-in-out infinite;
 }
         @keyframes containerGlow {
             0%, 100% { 
@@ -83,51 +81,50 @@ background: repeating-linear-gradient(
                     0 0 80px rgba(255,215,0,0.6),
                     0 0 120px rgba(255,69,0,0.4),
             
-[cite_start][cite: 18, 19]         inset 0 0 60px rgba(0,0,0,0.8);
-                [cite_start]border-color: #ffd700; [cite: 19, 20]
+         inset 0 0 60px rgba(0,0,0,0.8);
+                border-color: #ffd700;
 }
             50% { 
                 box-shadow: 
                     0 0 120px rgba(255,215,0,0.9),
                     0 0 160px rgba(255,69,0,0.7),
                     inset 0 0 
-[cite_start][cite: 20, 21] 80px rgba(255,69,0,0.3);
+ 80px rgba(255,69,0,0.3);
                 border-color: #ff4500;
             }
         }
         .container::before {
-            [cite_start]content: ''; [cite: 21]
-[cite_start]position: absolute; [cite: 22]
+            content: '';
+position: absolute;
             top: -10px; left: -10px; right: -10px; bottom: -10px;
-[cite_start][cite: 22]
+
 background: linear-gradient(45deg, 
-                [cite_start]#ffd700 0%, #ff4500 25%, #ffd700 50%, #ff8c00 75%, #ffd700 100%); [cite: 23]
-[cite_start]border-radius: 25px; [cite: 24]
+                #ffd700 0%, #ff4500 25%, #ffd700 50%, #ff8c00 75%, #ffd700 100%);
+border-radius: 25px;
             z-index: -1;
             animation: borderRotate 4s linear infinite;
-            [cite_start]opacity: 0.8; [cite: 24, 25]
+            opacity: 0.8;
 }
         @keyframes borderRotate {
-            [cite_start]0% { filter: hue-rotate(0deg) brightness(1); [cite: 25, 26]
+            0% { filter: hue-rotate(0deg) brightness(1);
 }
-            [cite_start]50% { filter: hue-rotate(90deg) brightness(1.5); [cite: 26, 27]
+            50% { filter: hue-rotate(90deg) brightness(1.5);
 }
-            [cite_start]100% { filter: hue-rotate(0deg) brightness(1); [cite: 27, 28]
+            100% { filter: hue-rotate(0deg) brightness(1);
 }
         }
         h1 { 
-            [cite_start]color: #ffd700; [cite: 28, 29]
+            color: #ffd700;
 font-size: 3.5em; 
             text-shadow: 
                 0 0 20px #ffd700,
                 0 0 40px #ff4500,
                 0 0 80px #ff8c00,
                 0 0 120px #ffd700;
-[cite_start][cite: 29]
-[cite_start]font-weight: 700; [cite: 30]
+font-weight: 700; 
             margin-bottom: 10px;
             animation: titleFlash 1.5s ease-in-out infinite;
-            [cite_start]font-family: Arial, sans-serif; [cite: 30, 31]
+            font-family: Arial, sans-serif;
 }
         @keyframes titleFlash {
             0%, 100% { 
@@ -135,125 +132,124 @@ font-size: 3.5em;
                     0 0 20px #ffd700,
                     0 0 40px #ff4500,
             
-[cite_start][cite: 31, 32]         0 0 60px #ff8c00;
+         0 0 60px #ff8c00;
                 transform: scale(1);
-                [cite_start]color: #ffd700; [cite: 32, 33]
+                color: #ffd700;
 }
             50% { 
                 text-shadow: 
                     0 0 40px #ffd700,
                     0 0 80px #ff4500,
                     0 0 120px 
-[cite_start][cite: 33, 34] #ff8c00,
-                    [cite_start]0 0 160px #ffd700; [cite: 34, 35]
+ #ff8c00,
+                    0 0 160px #ffd700;
 transform: scale(1.05);
                 color: #fff;
             }
         }
         h2 { 
-            [cite_start]color: #ff8c00; [cite: 35, 36]
+            color: #ff8c00;
 font-size: 1.3em; 
             margin-bottom: 30px;
             text-shadow: 0 0 20px #ff4500;
             animation: subtitlePulse 2s ease-in-out infinite;
-            [cite_start]font-family: Arial, sans-serif; [cite: 36, 37]
+            font-family: Arial, sans-serif;
 }
         @keyframes subtitlePulse {
-            [cite_start]0%, 100% { opacity: 0.8; [cite: 37, 38]
+            0%, 100% { opacity: 0.8;
 }
-            [cite_start]50% { opacity: 1; [cite: 38, 39]
+            50% { opacity: 1;
 text-shadow: 0 0 30px #ff4500, 0 0 50px #ffd700; }
         }
         .input-area { 
-            [cite_start]margin-bottom: 40px; [cite: 39, 40]
+            margin-bottom: 40px;
 }
         
         #items { 
-            [cite_start]display: none !important; [cite: 40, 41]
+            display: none !important;
 }
-        [cite_start].input-area label { display: none; [cite: 41, 42]
+        .input-area label { display: none;
 } 
         
         .status-board {
-            [cite_start]width: 100%; [cite: 42, 43]
+            width: 100%;
 min-height: 160px; 
             padding: 25px 15px 15px 15px; 
             border-radius: 10px; 
             border: 2px solid #ff4500; 
             background: linear-gradient(135deg, #1a1a1a, #0d0d0d); 
-            [cite_start]color: #fff; [cite: 43, 44]
+            color: #fff;
 display: flex; 
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            [cite_start]margin: 30px 0; [cite: 44, 45]
+            margin: 30px 0;
 box-shadow: 
                 inset 0 0 20px rgba(255,215,0,0.3),
-                [cite_start]0 0 30px rgba(255,69,0,0.4); [cite: 45]
-[cite_start]position: relative; [cite: 46]
+                0 0 30px rgba(255,69,0,0.4);
+position: relative;
             overflow: hidden;
         }
         .status-board::after {
-            [cite_start]content: ''; [cite: 46, 47]
+            content: '';
 position: absolute;
             top: -50%; left: -50%;
             width: 200%; height: 200%;
             background: linear-gradient(45deg, transparent 40%, rgba(255,215,0,0.1) 50%, transparent 60%);
-[cite_start][cite: 47]
-[cite_start]animation: statusGlow 4s linear infinite; [cite: 48]
+animation: statusGlow 4s linear infinite;
         }
         @keyframes statusGlow {
-            [cite_start]0% { transform: rotate(0deg); [cite: 48, 49]
+            0% { transform: rotate(0deg);
 }
-            [cite_start]100% { transform: rotate(360deg); [cite: 49, 50]
+            100% { transform: rotate(360deg);
 }
         }
         .status-board h3 {
-            [cite_start]color: #ffd700; [cite: 50, 51]
+            color: #ffd700;
 font-size: 1.4em; 
             margin-bottom: 5px;
             text-shadow: 0 0 10px #ff8c00;
             font-family: 'Chakra Petch', sans-serif;
             position: relative;
-            [cite_start]z-index: 1; [cite: 51, 52]
+            z-index: 1;
 }
         .status-board p {
-            [cite_start]font-size: 1.2em; [cite: 52, 53]
+            font-size: 1.2em;
 color: #fff;
             margin: 5px 0;
             font-family: Arial, sans-serif;
             position: relative;
-            [cite_start]z-index: 1; [cite: 53, 54]
+            z-index: 1;
 }
         .status-board .count {
-            [cite_start]font-family: 'Chakra Petch', monospace; [cite: 54, 55]
+            font-family: 'Chakra Petch', monospace;
 font-size: 3em;
             font-weight: 700; 
             color: #ff4500;
             text-shadow: 0 0 15px #ffd700, 0 0 30px #ff4500;
             position: relative;
-            [cite_start]z-index: 1; [cite: 55, 56]
+            z-index: 1;
 }
 
         .button-draw { 
-            [cite_start]background: linear-gradient(135deg, #ff4500, #ff8c00); [cite: 56, 57]
+            background: linear-gradient(135deg, #ff4500, #ff8c00);
 color: white; border: none; padding: 25px 60px; 
             font-size: 1.8em; 
-            [cite_start]border-radius: 50px; cursor: pointer; [cite: 57, 58]
+            border-radius: 50px; cursor: pointer;
 box-shadow: 
                 0 8px 20px rgba(255,69,0,0.6),
-                [cite_start]0 0 40px rgba(255,140,0,0.5); [cite: 58, 59]
+                0 0 40px rgba(255,140,0,0.5);
 font-weight: 700; 
             text-transform: uppercase; letter-spacing: 2px;
             position: relative;
             overflow: hidden;
-            [cite_start]animation: buttonPulse 2s ease-in-out infinite; [cite: 59, 60]
+            animation: buttonPulse 2s ease-in-out infinite;
 }
         @keyframes buttonPulse {
             0%, 100% { 
                 box-shadow: 
                     0 8px 20px rgba(255,69,0,0.6),
-                    [cite_start]0 0 40px rgba(255,140,0,0.5); [cite: 60, 61]
+                    0 0 40px rgba(255,140,0,0.5);
 transform: translateY(0);
             }
             50% { 
@@ -261,245 +257,245 @@ transform: translateY(0);
                     0 12px 30px rgba(255,69,0,0.9),
                     0 0 60px rgba(255,140,0,0.8),
                     0 
-[cite_start][cite: 61, 62] 0 80px rgba(255,215,0,0.6);
+ 0 80px rgba(255,215,0,0.6);
                 transform: translateY(-2px);
             }
         }
         .button-draw::before {
-            [cite_start]content: ''; [cite: 62, 63]
+            content: '';
 position: absolute;
             top: -50%; left: -50%;
             width: 200%; height: 200%;
             background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-            [cite_start]animation: buttonShine 3s linear infinite; [cite: 63, 64]
+            animation: buttonShine 3s linear infinite;
 }
         @keyframes buttonShine {
-            [cite_start]0% { transform: rotate(0deg) translateX(-100%); [cite: 64, 65]
+            0% { transform: rotate(0deg) translateX(-100%);
 }
-            [cite_start]100% { transform: rotate(0deg) translateX(100%); [cite: 65, 66]
+            100% { transform: rotate(0deg) translateX(100%);
 }
         }
         .button-draw:hover:not(:disabled) { 
-            [cite_start]transform: translateY(-5px) scale(1.08); [cite: 66, 67]
+            transform: translateY(-5px) scale(1.08);
 animation: none;
             box-shadow: 
                 0 15px 40px rgba(255,69,0,1),
-                [cite_start]0 0 80px rgba(255,140,0,1); [cite: 67, 68]
+                0 0 80px rgba(255,140,0,1);
 }
-        [cite_start].button-draw:disabled { background: #666; cursor: not-allowed; opacity: 0.6; [cite: 68, 69]
+        .button-draw:disabled { background: #666; cursor: not-allowed; opacity: 0.6;
 }
         .slot-frame {
-            [cite_start]width: 90%; [cite: 69, 70]
+            width: 90%;
 max-width: 850px; 
             height: 240px;
             background: linear-gradient(135deg, #1a0033, #330066, #1a0033);
             border: 12px solid #ffd700; border-radius: 25px;
-            [cite_start]box-shadow: 0 0 60px rgba(255,215,0,0.8); [cite: 70, 71]
+            box-shadow: 0 0 60px rgba(255,215,0,0.8);
 margin: 25px auto; display: flex;
             justify-content: center; align-items: center;
-            [cite_start]position: relative; [cite: 71, 72]
+            position: relative;
 }
         .slot-container {
-            [cite_start]display: flex; [cite: 72, 73]
+            display: flex;
 justify-content: space-around; align-items: center;
             border: 6px solid #cc0000; border-radius: 15px;
             background: linear-gradient(135deg, #000, #1a1a1a, #000);
-            [cite_start]overflow: hidden; width: 95%; [cite: 73]
-[cite_start]height: 170px; [cite: 74]
+            overflow: hidden; width: 95%;
+height: 170px; 
             box-shadow: inset 0 0 30px rgba(255,215,0,0.6);
-            [cite_start]position: relative; [cite: 74, 75]
+            position: relative;
 }
         .reel-wrapper {
-            [cite_start]flex-grow: 1; [cite: 75, 76]
+            flex-grow: 1;
 width: 33.33%; 
             max-width: 250px; 
             height: 100%; overflow: hidden;
             position: relative;
             background: linear-gradient(180deg, #000, #1a1a1a, #000);
-            [cite_start]border-right: 3px solid #444; [cite: 76, 77]
+            border-right: 3px solid #444;
 }
-        [cite_start].reel-wrapper:last-child { border-right: none; [cite: 77, 78]
+        .reel-wrapper:last-child { border-right: none;
 }
         .reel {
-            [cite_start]width: 100%; [cite: 78, 79]
+            width: 100%;
 display: flex; flex-direction: column;
             align-items: center; transition: transform 0s;
         }
         
         .reel-item {
-            [cite_start]height: 170px; [cite: 79, 80]
+            height: 170px;
 text-align: center; 
             font-size: 1.0em; 
             font-weight: 700; 
             color: #fff;
             background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
             width: 100%; flex-shrink: 0;
-            [cite_start]display: flex; flex-direction: column; [cite: 80, 81]
+            display: flex; flex-direction: column;
 align-items: center; justify-content: center;
             border-bottom: 2px solid #2a2a2a; 
             padding: 5px 5px; 
             line-height: 1.3;
             position: relative;
-            [cite_start]overflow: hidden; [cite: 81, 82]
+            overflow: hidden;
 }
         .reel-item::before {
-            [cite_start]content: ''; [cite: 82, 83]
+            content: '';
 position: absolute;
             top: 0; left: -100%;
             width: 100%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,215,0,0.1), transparent);
-            [cite_start]animation: itemShimmer 3s linear infinite; [cite: 83, 84]
+            animation: itemShimmer 3s linear infinite;
 }
         @keyframes itemShimmer {
-            [cite_start]0% { left: -100%; [cite: 84, 85]
+            0% { left: -100%;
 }
-            [cite_start]100% { left: 100%; [cite: 85, 86]
+            100% { left: 100%;
 }
         }
         .reel-item img {
-            [cite_start]width: 80px; [cite: 86, 87]
+            width: 80px;
 height: 80px; border-radius: 50%;
             object-fit: cover; margin-bottom: 8px;
             border: 4px solid #ffd700;
-            [cite_start]box-shadow: 0 0 15px rgba(255,215,0,0.8); [cite: 87, 88]
+            box-shadow: 0 0 15px rgba(255,215,0,0.8);
 }
         .slot-symbol {
-            [cite_start]font-size: 3.5em; [cite: 88, 89]
+            font-size: 3.5em;
 margin-bottom: 5px;
             filter: drop-shadow(0 0 10px rgba(255,215,0,0.8));
-            [cite_start]animation: symbolFloat 2s ease-in-out infinite; [cite: 89, 90]
+            animation: symbolFloat 2s ease-in-out infinite;
 }
         @keyframes symbolFloat {
-            [cite_start]0%, 100% { transform: translateY(0) scale(1); [cite: 90, 91]
+            0%, 100% { transform: translateY(0) scale(1);
 }
-            [cite_start]50% { transform: translateY(-5px) scale(1.05); [cite: 91, 92]
+            50% { transform: translateY(-5px) scale(1.05);
 }
         }
         .reel-item span {
-            [cite_start]font-size: 0.9em; [cite: 92, 93]
+            font-size: 0.9em;
 text-shadow: 0 0 10px rgba(255,215,0,0.8);
             color: #ffd700; 
             font-weight: 700;
             word-wrap: break-word; 
-            [cite_start]max-width: 95%; [cite: 93, 94]
+            max-width: 95%;
 }
         
         #result {
-            [cite_start]margin: 30px 0 20px; [cite: 94, 95]
+            margin: 30px 0 20px;
 padding: 25px;
             border: 4px solid #ff4500; border-radius: 15px;
             min-height: 60px; display: flex;
             align-items: center; justify-content: center;
             font-size: 2.2em; 
-            [cite_start]font-weight: 700; [cite: 95, 96]
+            font-weight: 700;
 color: #ffd700;
             background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
             text-shadow: 0 0 20px rgba(255,215,0,0.9);
-            [cite_start]font-family: 'Chakra Petch', sans-serif; [cite: 96, 97]
+            font-family: 'Chakra Petch', sans-serif;
 }
-        [cite_start].winner-display { animation: winnerGlow 1s infinite alternate; [cite: 97, 98]
+        .winner-display { animation: winnerGlow 1s infinite alternate;
 }
         @keyframes winnerGlow {
-            [cite_start]from { box-shadow: 0 0 40px rgba(255,215,0,0.8); [cite: 98, 99]
+            from { box-shadow: 0 0 40px rgba(255,215,0,0.8);
 }
-            [cite_start]to { box-shadow: 0 0 60px #ffd700; [cite: 99, 100]
+            to { box-shadow: 0 0 60px #ffd700;
 }
         }
         #jackpotOverlay { 
-            [cite_start]position: fixed; [cite: 100, 101]
+            position: fixed;
 top: 0; left: 0; width: 100%; height: 100%; 
             display: none; flex-direction: column;
             justify-content: center; align-items: center; 
-            [cite_start]background: rgba(0,0,0,0.9); z-index: 2000; [cite: 101, 102]
+            background: rgba(0,0,0,0.9); z-index: 2000;
 opacity: 0; transition: opacity 0.5s;
         }
         .jackpot-text { 
-            [cite_start]font-size: 7em; [cite: 102, 103]
+            font-size: 7em;
 font-weight: 900; 
             color: #ffd700;
             text-shadow: 0 0 40px #ff4500;
-            [cite_start]margin-bottom: 30px; [cite: 103, 104]
+            margin-bottom: 30px;
 }
         #winnerAnnouncement {
-            [cite_start]font-size: 3.5em; [cite: 104, 105]
+            font-size: 3.5em;
 color: #fff; 
             font-weight: 900;
             text-shadow: 0 0 30px #00FFFF, 0 0 50px #ffd700;
             padding: 30px 50px;
-            [cite_start]background: linear-gradient(135deg, rgba(255,215,0,0.3), rgba(255,69,0,0.4)); [cite: 105, 106]
+            background: linear-gradient(135deg, rgba(255,215,0,0.3), rgba(255,69,0,0.4));
 border-radius: 20px; 
             display: flex;
             align-items: center; 
             border: 5px solid #ffd700;
-            [cite_start]box-shadow: 0 0 60px rgba(255,215,0,1), inset 0 0 40px rgba(255,69,0,0.5); [cite: 106, 107]
-[cite_start]animation: winnerBounce 0.5s ease infinite; [cite: 107]
-}
+            box-shadow: 0 0 60px rgba(255,215,0,1), inset 0 0 40px rgba(255,69,0,0.5);
+animation: winnerBounce 0.5s ease infinite;
+        }
         @keyframes winnerBounce {
-            [cite_start]0%, 100% { transform: scale(1); [cite: 108]
+            0%, 100% { transform: scale(1);
 }
-            [cite_start]50% { transform: scale(1.1); [cite: 109]
+            50% { transform: scale(1.1);
 }
         }
         #winnerAnnouncement img {
-            [cite_start]width: 100px; [cite: 109, 110]
+            width: 100px;
 height: 100px; border-radius: 50%;
             margin-right: 20px; border: 5px solid #ffd700;
-            [cite_start]box-shadow: 0 0 30px rgba(255,215,0,0.9); [cite: 110, 111]
+            box-shadow: 0 0 30px rgba(255,215,0,0.9);
 }
         .winner-symbol {
-            [cite_start]font-size: 5em; [cite: 111, 112]
+            font-size: 5em;
 margin-right: 20px;
             filter: drop-shadow(0 0 30px rgba(255,215,0,1));
-            [cite_start]animation: symbolSpin 2s linear infinite; [cite: 112, 113]
+            animation: symbolSpin 2s linear infinite;
 }
         @keyframes symbolSpin {
-            [cite_start]from { transform: rotate(0deg) scale(1); [cite: 113, 114]
+            from { transform: rotate(0deg) scale(1);
 }
-            [cite_start]50% { transform: rotate(180deg) scale(1.2); [cite: 114, 115]
+            50% { transform: rotate(180deg) scale(1.2);
 }
-            [cite_start]to { transform: rotate(360deg) scale(1); [cite: 115, 116]
+            to { transform: rotate(360deg) scale(1);
 }
         }
         .confetti-piece {
-            [cite_start]position: absolute; [cite: 116, 117]
+            position: absolute;
 animation: confettiFall 3s linear forwards;
             border-radius: 50%;
         }
         @keyframes confettiFall {
             0% { 
-                [cite_start]transform: translateY(0) rotate(0deg); [cite: 118]
+                transform: translateY(0) rotate(0deg);
 opacity: 1; 
             }
             100% { 
-                [cite_start]transform: translateY(100vh) translateX(calc(-50vw + 100vw * var(--random))) rotate(1080deg); [cite: 119]
+                transform: translateY(100vh) translateX(calc(-50vw + 100vw * var(--random))) rotate(1080deg);
 opacity: 0; 
             }
         }
         .confirm-popup { 
-            [cite_start]position: fixed; [cite: 119, 120]
+            position: fixed;
 top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0,0,0,0.9); display: none; 
-            [cite_start]justify-content: center; align-items: center; z-index: 1000; [cite: 120, 121]
+            justify-content: center; align-items: center; z-index: 1000;
 }
         .popup-content { 
-            [cite_start]background: linear-gradient(135deg, #1a1a1a, #0d0d0d); [cite: 121, 122]
+            background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
 padding: 40px; border-radius: 20px; text-align: center; 
             box-shadow: 0 0 50px rgba(255,215,0,0.8);
-            [cite_start]width: 400px; border: 4px solid #ffd700; [cite: 122, 123]
+            width: 400px; border: 4px solid #ffd700;
 }
-        [cite_start].popup-content p { font-size: 1.3em; margin-bottom: 30px; color: #fff; [cite: 123, 124]
+        .popup-content p { font-size: 1.3em; margin-bottom: 30px; color: #fff;
 }
         .popup-buttons button { 
-            [cite_start]padding: 15px 30px; [cite: 124, 125]
+            padding: 15px 30px;
 margin: 0 15px; border: none; 
             border-radius: 50px; font-weight: 700; cursor: pointer; 
-            [cite_start]font-size: 1.1em; text-transform: uppercase; [cite: 125, 126]
+            font-size: 1.1em; text-transform: uppercase;
 }
-        [cite_start].popup-buttons button:hover { transform: translateY(-2px); [cite: 126, 127]
+        .popup-buttons button:hover { transform: translateY(-2px);
 }
-        [cite_start]#confirmRemove { background: linear-gradient(135deg, #cc0000, #ff0000); color: white; [cite: 127, 128]
+        #confirmRemove { background: linear-gradient(135deg, #cc0000, #ff0000); color: white;
 }
-        [cite_start]#cancelRemove { background: linear-gradient(135deg, #2e8b57, #3cb371); color: white; [cite: 128, 129]
+        #cancelRemove { background: linear-gradient(135deg, #2e8b57, #3cb371); color: white;
 }
     </style>
 </head>
@@ -540,7 +536,7 @@ Prize #28
 Prize #29
 Prize #30
 Prize 
-[cite_start][cite: 130] #31
+ #31
 Prize #32
 Prize #33
 Prize #34
@@ -567,8 +563,8 @@ Prize #52</textarea>
                 <h3>Lucky Draw Status</h3>
                 <p>Initial Prizes: <span class="count">52</span> Items</p>
                 
-[cite_start][cite: 131] <p>Remaining: <span id="itemsRemainingCount" class="count">52</span> Items</p>
-                [cite_start]<p>Next Draw: <span id="nextRewardDisplay" style="color: #00FFFF; [cite: 132]
+ <p>Remaining: <span id="itemsRemainingCount" class="count">52</span> Items</p>
+                <p>Next Draw: <span id="nextRewardDisplay" style="color: #00FFFF;
 font-weight: bold;">Employee No 1</span></p>
             </div>
             
@@ -578,7 +574,7 @@ font-weight: bold;">Employee No 1</span></p>
                 <div class="reel-wrapper"><div class="reel" id="reel1"></div></div>
                 <div class="reel-wrapper"><div class="reel" id="reel2"></div></div>
      
-[cite_start][cite: 133]            <div class="reel-wrapper"><div class="reel" id="reel3"></div></div>
+            <div class="reel-wrapper"><div class="reel" id="reel3"></div></div>
             </div>
         </div>
         <button class="button-draw" id="drawButton" onclick="startDraw()">🎰 SPIN 🎰</button>
@@ -590,7 +586,7 @@ font-weight: bold;">Employee No 1</span></p>
     </div>
     <div id="confirmPopup" class="confirm-popup">
       
-[cite_start][cite: 134]   <div class="popup-content">
+   <div class="popup-content">
             <p>Remove Prize "<span id="winnerNameDisplay" style="color:#ffd700;"></span>" from list?</p>
             <div class="popup-buttons">
                 <button id="confirmRemove" onclick="handleConfirmation(true)">REMOVE</button>
@@ -600,71 +596,71 @@ font-weight: bold;">Employee No 1</span></p>
     </div>
     <script>
   
-[cite_start][cite: 135]       let currentWinner = { name: '', symbol: '' };
-        [cite_start]let allItems = []; [cite: 136]
+       let currentWinner = { name: '', symbol: '' };
+        let allItems = [];
 const reelHeight = 170;
         const SPIN_DURATION_MS = 6000;
         const REELS = ['reel1', 'reel2', 'reel3'];
-        [cite_start]let drawButton = document.getElementById('drawButton'); [cite: 137]
+        let drawButton = document.getElementById('drawButton');
 let isAudioUnlocked = false;
 
         // Web Audio API System
-        [cite_start]const AudioContext = window.AudioContext || [cite: 137, 138]
+        const AudioContext = window.AudioContext ||
 window.webkitAudioContext;
         let audioContext = null;
         let spinOscillator = null;
 
         function initAudioContext() {
             if (!audioContext) {
-                [cite_start]audioContext = new AudioContext(); [cite: 139]
+                audioContext = new AudioContext();
 console.log("✅ AudioContext created");
             }
         }
 
         async function unlockAudio() {
-            [cite_start]initAudioContext(); [cite: 140]
+            initAudioContext();
 if (audioContext && audioContext.state === 'suspended') {
                 try {
-                    [cite_start]await audioContext.resume(); [cite: 140, 141]
+                    await audioContext.resume();
 isAudioUnlocked = true;
                     console.log("🔓 Audio unlocked!");
                 } catch (e) {
-                    [cite_start]console.error("❌ Failed to unlock audio:", e); [cite: 142]
+                    console.error("❌ Failed to unlock audio:", e);
 }
             } else {
-                [cite_start]isAudioUnlocked = true; [cite: 143]
+                isAudioUnlocked = true;
 }
         }
 
         function playSpinSound() {
-            [cite_start]if (!audioContext || !isAudioUnlocked) return; [cite: 144]
-[cite_start]stopSpinSound(); [cite: 144]
+            if (!audioContext || !isAudioUnlocked) return;
+stopSpinSound();
             
             spinOscillator = audioContext.createOscillator();
             const gainNode = audioContext.createGain();
             
-            [cite_start]spinOscillator.type = 'sawtooth'; [cite: 144]
-            [cite_start]spinOscillator.frequency.setValueAtTime(200, audioContext.currentTime); [cite: 144]
-            [cite_start]spinOscillator.frequency.exponentialRampToValueAtTime(400, audioContext.currentTime + 0.5); [cite: 144]
+            spinOscillator.type = 'sawtooth';
+            spinOscillator.frequency.setValueAtTime(200, audioContext.currentTime);
+            spinOscillator.frequency.exponentialRampToValueAtTime(400, audioContext.currentTime + 0.5);
             
-            [cite_start]gainNode.gain.setValueAtTime(0.15, audioContext.currentTime); [cite: 145]
-            [cite_start]gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 6); [cite: 145]
+            gainNode.gain.setValueAtTime(0.15, audioContext.currentTime);
+gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 6);
             
             spinOscillator.connect(gainNode);
-            [cite_start]gainNode.connect(audioContext.destination); [cite: 145, 153]
+            gainNode.connect(audioContext.destination);
             
-            [cite_start]spinOscillator.start(); [cite: 145]
-            [cite_start]console.log("🎵 Spin sound playing"); [cite: 146]
+            spinOscillator.start();
+            console.log("🎵 Spin sound playing");
         }
 
         function stopSpinSound() {
             if (spinOscillator) {
                 try {
-                    [cite_start]spinOscillator.stop(); [cite: 147]
-                    [cite_start]spinOscillator.disconnect(); [cite: 147]
+                    spinOscillator.stop();
+spinOscillator.disconnect();
                 } catch (e) {}
-                [cite_start]spinOscillator = null; [cite: 148]
-            }
+                spinOscillator = null;
+}
         }
 
         // ************************************************
@@ -743,109 +739,109 @@ isAudioUnlocked = true;
         // ******* END MODIFIED CELEBRATION SOUND *********
         // ************************************************
 
-        [cite_start]const slotSymbols = ['🍒', '🍋', '🍊', '🍉', '🍇', '⭐', '💎', '7️⃣', '🔔', '💰', '👑', '🍀', '🚀', '🎁', '🏆']; [cite: 159]
-        document.addEventListener('DOMContentLoaded', initialize);
+        const slotSymbols = ['🍒', '🍋', '🍊', '🍉', '🍇', '⭐', '💎', '7️⃣', '🔔', '💰', '👑', '🍀', '🚀', '🎁', '🏆'];
+document.addEventListener('DOMContentLoaded', initialize);
 
         function initialize() {
             updateReels();
-            [cite_start]document.getElementById('reel3').addEventListener('transitionend', handleSpinEnd); [cite: 160]
-[cite_start]document.body.addEventListener('click', unlockAudio, { once: true }); [cite: 160]
+            document.getElementById('reel3').addEventListener('transitionend', handleSpinEnd);
+document.body.addEventListener('click', unlockAudio, { once: true });
         }
 
         function updateStatusBoard(currentList) {
-            [cite_start]const count = currentList.length; [cite: 161]
-[cite_start]const initialCount = 52; [cite: 161]
+            const count = currentList.length;
+const initialCount = 52;
             const nextRewardNumber = initialCount - count + 1;
             
-            [cite_start]document.getElementById('itemsRemainingCount').textContent = count; [cite: 162]
+            document.getElementById('itemsRemainingCount').textContent = count;
 document.getElementById('nextRewardDisplay').textContent = 
-                [cite_start]count > 0 ? [cite: 162, 163]
-[cite_start]`Employee No ${nextRewardNumber}` : 'All Gone!'; [cite: 163]
+                count > 0 ?
+`Employee No ${nextRewardNumber}` : 'All Gone!';
             
             if (count === 0) {
-                [cite_start]document.getElementById('result').textContent = 'Draw Ended!'; [cite: 164]
-[cite_start]drawButton.disabled = true; [cite: 164]
+                document.getElementById('result').textContent = 'Draw Ended!';
+drawButton.disabled = true;
             }
         }
 
         function updateReels() {
-            [cite_start]const textarea = document.getElementById('items'); [cite: 165]
-[cite_start]const rawNames = textarea.value.split('\n').map(i => i.trim()).filter(i => i.length > 0); [cite: 165]
-[cite_start][cite: 166] allItems = rawNames.map((name, idx) => ({
+            const textarea = document.getElementById('items');
+const rawNames = textarea.value.split('\n').map(i => i.trim()).filter(i => i.length > 0);
+ allItems = rawNames.map((name, idx) => ({
                 name: name,
                 symbol: slotSymbols[idx % slotSymbols.length]
-            [cite_start]})); [cite: 166]
-[cite_start][cite: 167] REELS.forEach(id => {
+            }));
+REELS.forEach(id => {
                 const reel = document.getElementById(id);
                 reel.innerHTML = '';
                 reel.style.transition = 'none'; 
                 reel.style.transform = 'translateY(0)';
                 
         
-[cite_start][cite: 168]         if (allItems.length > 0) {
+         if (allItems.length > 0) {
                     const repeated = Array(5).fill(allItems).flat(); 
                     repeated.forEach(item => {
                         const div = document.createElement('div');
                
-[cite_start][cite: 169]          div.className = 'reel-item';
+          div.className = 'reel-item';
                         const symbolDiv = document.createElement('div');
                         symbolDiv.className = 'slot-symbol';
                         symbolDiv.textContent = item.symbol;
           
-[cite_start][cite: 170]               div.appendChild(symbolDiv);
+               div.appendChild(symbolDiv);
                         const span = document.createElement('span');
                         span.textContent = item.name;
                         div.appendChild(span);
          
-[cite_start][cite: 171]                reel.appendChild(div);
+                reel.appendChild(div);
                     });
-[cite_start][cite: 172] } else {
-                    [cite_start]const div = document.createElement('div'); [cite: 173]
+ } else {
+                    const div = document.createElement('div');
 div.className = 'reel-item';
                     div.textContent = 'NO ITEMS';
                     reel.appendChild(div);
                 }
             });
-[cite_start][cite: 174] document.getElementById('result').classList.remove('winner-display');
+document.getElementById('result').classList.remove('winner-display');
             updateStatusBoard(rawNames);
         }
 
         function handleSpinEnd(e) {
-            [cite_start]if (e.propertyName !== 'transform' || e.target.id !== 'reel3') return; [cite: 175]
-[cite_start]stopSpinSound(); [cite: 175]
+            if (e.propertyName !== 'transform' || e.target.id !== 'reel3') return;
+stopSpinSound();
             
             setTimeout(() => {
                 playCelebrationSound();
-            [cite_start]}, 100); [cite: 176]
+            }, 100);
 const resultDiv = document.getElementById('result');
             resultDiv.textContent = currentWinner.name + ' 🥳';
-            [cite_start]resultDiv.classList.add('winner-display'); [cite: 177]
+            resultDiv.classList.add('winner-display');
 document.getElementById('winnerAnnouncement').innerHTML = `
                 <div class="winner-symbol">${currentWinner.symbol}</div>
                 <span>🎉 ${currentWinner.name} 🎉</span>
-            [cite_start]`; [cite: 177]
-[cite_start][cite: 178] drawButton.disabled = false;
+            `;
+drawButton.disabled = false;
             triggerJackpotAnimation();
             
             setTimeout(() => {
                  showConfirmationPopup(); 
-            [cite_start]}, 3500); [cite: 179]
+            }, 3500);
 }
         
         async function startDraw() {
-            [cite_start]await unlockAudio(); [cite: 180]
-[cite_start]updateReels(); [cite: 180]
+            await unlockAudio();
+updateReels(); 
             const resultDiv = document.getElementById('result');
             
             if (allItems.length === 0) {
-                [cite_start]resultDiv.textContent = 'Prizes are finished!'; [cite: 181]
-[cite_start]resultDiv.classList.remove('winner-display'); [cite: 181]
+                resultDiv.textContent = 'Prizes are finished!';
+resultDiv.classList.remove('winner-display');
                 drawButton.disabled = true;
                 return;
             }
             
-            [cite_start]drawButton.disabled = true; [cite: 182]
-[cite_start]resultDiv.classList.remove('winner-display'); [cite: 182]
+            drawButton.disabled = true;
+resultDiv.classList.remove('winner-display');
             resultDiv.textContent = 'ROLLING...';
 
             playSpinSound();
@@ -853,10 +849,10 @@ document.getElementById('winnerAnnouncement').innerHTML = `
             const winnerIndex = Math.floor(Math.random() * allItems.length);
             currentWinner = allItems[winnerIndex];
             
-            [cite_start]const itemCount = allItems.length; [cite: 183]
+            const itemCount = allItems.length;
 const repeatCycle = 4; 
             const stopIndex = (repeatCycle * itemCount) + winnerIndex; 
-            [cite_start]const finalTranslateY = stopIndex * reelHeight; [cite: 183, 184]
+            const finalTranslateY = stopIndex * reelHeight;
 REELS.forEach((id, index) => {
                 const reel = document.getElementById(id);
                 
@@ -864,31 +860,31 @@ REELS.forEach((id, index) => {
                 reel.style.transform = 'translateY(0)';
                 
           
-[cite_start][cite: 185]       setTimeout(() => {
+       setTimeout(() => {
                     const duration = SPIN_DURATION_MS + (index * 500); 
                     reel.style.transition = `transform ${duration / 1000}s cubic-bezier(0.1, 0.7, 0.4, 1)`;
                     reel.style.transform = `translateY(-${finalTranslateY}px)`;
              
-[cite_start][cite: 186]    }, 10 + (index * 50));
+    }, 10 + (index * 50));
             });
-[cite_start][cite: 187] }
+}
 
         function triggerJackpotAnimation() {
-            [cite_start]const overlay = document.getElementById('jackpotOverlay'); [cite: 187, 188]
+            const overlay = document.getElementById('jackpotOverlay');
 overlay.style.display = 'flex';
-            [cite_start]setTimeout(() => { overlay.style.opacity = '1'; }, 50); [cite: 188, 189]
-[cite_start][cite: 189] for (let i = 0; i < 150; i++) {
-                [cite_start]const c = document.createElement('div'); [cite: 190]
-[cite_start]c.className = 'confetti-piece'; [cite: 190]
+            setTimeout(() => { overlay.style.opacity = '1'; }, 50);
+for (let i = 0; i < 150; i++) {
+                const c = document.createElement('div');
+c.className = 'confetti-piece';
                 c.style.left = Math.random() * 100 + 'vw';
-                [cite_start]c.style.top = -20 + 'px'; [cite: 190, 191]
-[cite_start]c.style.width = (5 + Math.random() * 15) + 'px'; [cite: 191]
-                [cite_start]c.style.height = (5 + Math.random() * 15) + 'px'; [cite: 192]
-[cite_start]c.style.backgroundColor = ['#ffd700', '#ff4500', '#fff', '#00FFFF', '#ff1493', '#7fff00', '#ff8c00'][Math.floor(Math.random() * 7)]; [cite: 192]
-                [cite_start]c.style.animationDelay = (Math.random() * 0.5) + 's'; [cite: 192, 193]
-[cite_start]c.style.animationDuration = (2 + Math.random() * 2) + 's'; [cite: 193]
+                c.style.top = -20 + 'px';
+c.style.width = (5 + Math.random() * 15) + 'px';
+                c.style.height = (5 + Math.random() * 15) + 'px';
+c.style.backgroundColor = ['#ffd700', '#ff4500', '#fff', '#00FFFF', '#ff1493', '#7fff00', '#ff8c00'][Math.floor(Math.random() * 7)];
+                c.style.animationDelay = (Math.random() * 0.5) + 's';
+c.style.animationDuration = (2 + Math.random() * 2) + 's';
                 c.style.setProperty('--random', Math.random());
-                [cite_start]overlay.appendChild(c); [cite: 193, 194]
+                overlay.appendChild(c);
 }
 
             setTimeout(() => {
@@ -897,32 +893,32 @@ overlay.style.display = 'flex';
                     overlay.style.display = 'none';
                     overlay.querySelectorAll('.confetti-piece').forEach(c => c.remove());
       
-[cite_start][cite: 195]           }, 500);
-            [cite_start]}, 3500); [cite: 196]
+           }, 500);
+            }, 3500);
 }
 
         function showConfirmationPopup() {
-            [cite_start]document.getElementById('winnerNameDisplay').textContent = currentWinner.name; [cite: 197]
-[cite_start]document.getElementById('confirmPopup').style.display = 'flex'; [cite: 197]
+            document.getElementById('winnerNameDisplay').textContent = currentWinner.name;
+document.getElementById('confirmPopup').style.display = 'flex';
         }
 
         function handleConfirmation(shouldRemove) {
-            [cite_start]document.getElementById('confirmPopup').style.display = 'none'; [cite: 198]
-[cite_start]drawButton.disabled = false; [cite: 198]
+            document.getElementById('confirmPopup').style.display = 'none';
+drawButton.disabled = false;
             
             if (shouldRemove) {
-                [cite_start]const textarea = document.getElementById('items'); [cite: 199]
-[cite_start]const currentNames = textarea.value.split('\n').map(i => i.trim()).filter(i => i.length > 0); [cite: 199]
+                const textarea = document.getElementById('items');
+const currentNames = textarea.value.split('\n').map(i => i.trim()).filter(i => i.length > 0);
                 const updated = currentNames.filter(n => n !== currentWinner.name);
-[cite_start][cite: 200] textarea.value = updated.join('\n');
+textarea.value = updated.join('\n');
                 currentWinner = { name: '', symbol: '' };
-                document.getElementById('result').textContent = 'Prize Removed! [cite_start]Waiting for Next Spin...'; [cite: 200, 201]
+                document.getElementById('result').textContent = 'Prize Removed! Waiting for Next Spin...';
 } else {
-                [cite_start]currentWinner = { name: '', symbol: '' }; [cite: 202]
-document.getElementById('result').textContent = 'Prize kept! [cite_start]Spin again...'; [cite: 202]
+                currentWinner = { name: '', symbol: '' };
+document.getElementById('result').textContent = 'Prize kept! Spin again...';
             }
             document.getElementById('result').classList.remove('winner-display');
-            [cite_start]updateReels(); [cite: 203]
+            updateReels();
 }
     </script>
 </body>
